@@ -1,0 +1,11 @@
+# Dados sensíveis — nunca versionar
+*.csv
+*.xlsx
+*.xls
+.env
+*.key
+credentials*.json
+
+# Sistema
+.DS_Store
+node_modules/
