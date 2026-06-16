@@ -4,6 +4,16 @@ Guia de estudo e referência para usar **Claude Code** no trabalho de Growth/Mar
 
 > **Como este repositório foi pensado.** Você disse que não tem facilidade com disciplina. Então a estrutura aqui é *anti-procrastinação*: nada de "leia 40 páginas antes de começar". Cada arquivo abre com um bloco **"Faça isso agora (5 min)"**, e o conteúdo mais longo vem depois, pra quando você quiser aprofundar. Comece sempre pela ação pequena.
 
+## Fluxo de curadoria de conteúdo
+
+Este repositório tem um sistema para absorver links e transformá-los em conhecimento organizado:
+
+1. **Cole links** no arquivo [`inbox.md`](inbox.md) — um por linha
+2. **Rode `/process-inbox`** no Claude Code — ele busca cada link, extrai os aprendizados e atualiza os `.md` certos automaticamente
+3. **Para revisar outro projeto** com base neste gabarito, rode `/ai-review [caminho do projeto]`
+
+---
+
 ## Por onde começar
 
 1. **[00-comece-aqui/LEIA-PRIMEIRO.md](00-comece-aqui/LEIA-PRIMEIRO.md)** — como navegar e como estudar sem se perder.
@@ -13,6 +23,7 @@ Guia de estudo e referência para usar **Claude Code** no trabalho de Growth/Mar
 5. **[04-biblioteca-de-estudos/](04-biblioteca-de-estudos/)** — lista de vídeos catalogada por tema.
 6. **[05-templates/](05-templates/)** — arquivos prontos pra copiar (CLAUDE.md, subagentes, skills).
 7. **[06-ferramentas-e-repos/](06-ferramentas-e-repos/)** — os 10 repos mais populares do GitHub para turbinar o Claude Code, com instalação e use case para cada um.
+8. **[07-skills/](07-skills/)** — skills prontas para instalar: `/process-inbox` e `/ai-review`.
 
 ## Estrutura
 
@@ -56,8 +67,11 @@ claude-code-growth/
 │   ├── 08-obsidian-skills.md
 │   ├── 09-notebooklm-skill.md
 │   └── 10-marketing-skills.md
-└── .claude/
-    └── skills/   (onde suas skills reais vão morar)
+├── inbox.md                  ← cole links aqui
+└── 07-skills/
+    ├── README.md             ← como instalar as skills
+    ├── process-inbox.md      ← skill /process-inbox
+    └── ai-review.md          ← skill /ai-review
 ```
 
 ## Seu contexto
