@@ -21,3 +21,39 @@ Sou Victor, Head de Growth numa startup de Martech (MMM / media measurement). N�
 
 ## O que estou aprendendo
 Estou aprendendo Claude Code e IA aplicada ao trabalho. Quando eu fizer algo sem entender o porquê, prefiro uma explicação rápida do conceito antes do resultado — não precisa ser longa, só o suficiente pra eu entender o que está acontecendo.
+
+## Meta deste projeto
+Usar Claude Code como ferramenta de trabalho — não virar engenheiro de software. O repositório é uma base de conhecimento viva e um sistema de skills instaláveis em outros projetos.
+
+## Arquitetura em 3 camadas
+
+1. **Knowledge base viva** — conteúdo indexado automaticamente em `07-inbox/` via: (a) link enviado por GitHub Issue (iOS Shortcut), (b) repos do GitHub estrelados (workflow semanal). Cada arquivo `.md` tem frontmatter YAML com titulo, tema, bullets, url, importancia.
+
+2. **Feed mobile** — site estático em GitHub Pages (`https://victorauad.github.io/claude-code-growth`) gerado por `scripts/build-site.py`. Cards com filtro por tema e campo de contexto "o que estou fazendo agora".
+
+3. **Skills instaláveis** — arquivos `SKILL.md` em `skills/`, copiados para `.claude/skills/` de outros repos via GitHub Action `install-skills-remote.yml`. Skills atuais: `coach-claude-code`, `setup-review`, `bigquery-workflow`.
+
+## Estrutura real do repositório
+```
+claude-code-growth/
+├── 07-inbox/                    — conteúdo indexado (30+ arquivos .md com frontmatter)
+├── scripts/
+│   ├── build-site.py            — gera docs/index.html + knowledge-base.json
+│   ├── ingest.py                — fetch + sumarização via Claude Haiku → 07-inbox/
+│   └── ingest-github-stars.py  — busca repos estrelados e indexa READMEs
+├── skills/
+│   ├── coach-claude-code/SKILL.md
+│   ├── setup-review/SKILL.md
+│   └── bigquery-workflow/SKILL.md
+├── docs/                        — gerado automaticamente (GitHub Pages)
+├── .github/workflows/
+│   ├── ingest-link.yml          — dispara ao Issue receber label "add-link"
+│   ├── ingest-github-stars.yml  — toda segunda 09h UTC
+│   ├── reindex-weekly.yml       — rebuild do site toda segunda 08h UTC
+│   └── install-skills-remote.yml
+├── 00-comece-aqui/ a 06-ferramentas-e-repos/ — documentação editorial
+└── .claude/settings.json
+```
+
+## Feature em andamento
+Conectar skills à knowledge base: `build-site.py` gera `docs/knowledge-base.json` público, e as skills `coach-claude-code` e `setup-review` consultam esse JSON via WebFetch/curl para trazer recomendações contextualizadas da KB ao final de cada avaliação.
