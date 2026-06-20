@@ -12,6 +12,7 @@ Lista de conteúdos **em vídeo**, catalogados por tema, pra você assistir no i
 
 - [x] **Claude Code for Beginners Tutorial [Full Course]** — curso completo pra iniciantes, do scaffolding ao workflow. https://www.youtube.com/watch?v=gh2_PhgZGsM ✅ indexado em 07-inbox
 - [ ] **Claude Code Tutorial — Complete Guide & Best Practices (playlist)** — playlist baseada na doc oficial. https://www.youtube.com/playlist?list=PL-PjnjwzvkkxUHXxuohyiAuyvHXh08SFE
+  > ⚠️ Playlists não são processáveis pelo pipeline de ingestão. Para indexar, envie o link de um vídeo individual da playlist.
 
 ## Tema 2 — Best practices direto da Anthropic (prioridade alta)
 
