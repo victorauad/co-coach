@@ -40,13 +40,13 @@ Um sistema com quatro funções integradas:
 
 ### ⏳ Pendente — para atingir a Definition of Done
 
-#### P1 — Bloqueiam o fluxo automático (sem isso o pipeline não roda em produção)
+#### ~~P1 — Bloqueiam o fluxo automático~~ ✅ Concluído
 
-| Tarefa | O que fazer | Onde |
-|--------|-------------|------|
-| Criar secret `ANTHROPIC_API_KEY` no repo | github.com → claude-code-growth → Settings → Secrets → Actions → New secret | GitHub |
-| Criar label `add-link` no repo | github.com → claude-code-growth → Issues → Labels → New label | GitHub |
-| Testar ingestão via Issue | Criar uma Issue manualmente com label `add-link` e URL no corpo, confirmar que o arquivo aparece em `07-inbox/` e o feed atualiza | GitHub |
+| Tarefa | Status |
+|--------|--------|
+| Criar secret `ANTHROPIC_API_KEY` | ✅ Feito |
+| Criar label `add-link` | ✅ Feito |
+| Testar ingestão via Issue | ✅ Testado — Issue #1 processou `anthropic.com/engineering/claude-code-best-practices` em ~23s, card no feed, Issue fechada |
 
 #### P2 — Integração com outros repos
 
@@ -76,6 +76,7 @@ Um sistema com quatro funções integradas:
 
 O projeto está completo quando:
 
+- [x] Ingestão via GitHub Issue funciona — link processado e card no feed em ~23s (testado em 20/06/2026)
 - [ ] Você manda um link pelo iPhone e em até 3 minutos aparece como card no feed mobile
 - [ ] O feed mostra conteúdo relevante quando você digita o que está fazendo no campo de contexto
 - [ ] Em qualquer repo novo, `/coach-claude-code` avalia o CLAUDE.md e devolve score + sugestões em menos de 1 min
