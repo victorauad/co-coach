@@ -46,10 +46,23 @@ def fetch_youtube_transcript(url: str) -> str:
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=["pt", "en"])
         return " ".join(t["text"] for t in transcript[:300])  # primeiros ~5 min
-    except NoTranscriptFound:
-        return ""
     except Exception:
-        return ""
+        pass
+
+    # fallback: busca título e descrição da página do YouTube
+    try:
+        resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
+        soup = BeautifulSoup(resp.text, "html.parser")
+        title = soup.find("meta", {"name": "title"}) or soup.find("meta", {"property": "og:title"})
+        desc = soup.find("meta", {"name": "description"}) or soup.find("meta", {"property": "og:description"})
+        title_text = title["content"] if title else ""
+        desc_text = desc["content"] if desc else ""
+        if title_text or desc_text:
+            return f"Título: {title_text}\nDescrição: {desc_text}"
+    except Exception:
+        pass
+
+    return ""
 
 
 def fetch_article_text(url: str) -> str:
@@ -83,7 +96,7 @@ Analise o conteúdo abaixo (extraído de {url}) e retorne um JSON com exatamente
 Conteúdo:
 {content[:6000]}
 
-Retorne apenas o JSON, sem markdown, sem texto adicional."""
+IMPORTANTE: Retorne APENAS o JSON puro, começando com {{ e terminando com }}. Sem markdown, sem ```json, sem texto antes ou depois."""
 
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
@@ -92,7 +105,17 @@ Retorne apenas o JSON, sem markdown, sem texto adicional."""
     )
 
     raw = message.content[0].text.strip()
-    return json.loads(raw)
+    # remove blocos markdown caso o modelo os inclua
+    if raw.startswith("```"):
+        raw = re.sub(r"^```[a-z]*\n?", "", raw)
+        raw = re.sub(r"\n?```$", "", raw)
+        raw = raw.strip()
+
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        print(f"Resposta inesperada da API:\n{raw[:500]}")
+        raise
 
 
 def save_to_inbox(url: str, data: dict) -> str:
