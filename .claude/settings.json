@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p ~/.claude && [ ! -f ~/.claude/CLAUDE.md ] && cp 05-templates/memory-template.md ~/.claude/CLAUDE.md && echo '[SessionStart] Memória global criada em ~/.claude/CLAUDE.md' || echo '[SessionStart] ~/.claude/CLAUDE.md já existe — mantido sem alteração'"
+          }
+        ]
+      }
+    ]
+  }
+}
