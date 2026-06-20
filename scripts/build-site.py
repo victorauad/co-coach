@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Gera o site estático (docs/index.html) a partir dos arquivos em 07-inbox/.
+Gera o site estático (docs/index.html) a partir de múltiplas pastas do repo.
 Roda automaticamente após cada ingestão e semanalmente.
 """
 
@@ -10,9 +10,22 @@ import json
 import datetime
 from pathlib import Path
 
-INBOX_DIR = Path("07-inbox")
 DOCS_DIR = Path("docs")
 DOCS_DIR.mkdir(exist_ok=True)
+
+# Pastas incluídas no feed e o tema padrão de cada uma
+CONTENT_DIRS = [
+    (Path("07-inbox"),               None),           # tema vem do frontmatter
+    (Path("06-ferramentas-e-repos"), "ferramentas"),
+    (Path("03-metodologias"),        "metodologia"),
+    (Path("02-fluxos-de-trabalho"),  "workflow"),
+    (Path("04-biblioteca-de-estudos"), "outros"),
+    (Path("01-setup"),               "setup"),
+    (Path("05-templates"),           "setup"),
+]
+
+# Arquivos que são índices/navegação, não conteúdo
+SKIP_FILES = {"README.md", "lista-de-videos.md"}
 
 
 def parse_frontmatter(text: str) -> tuple[dict, str]:
@@ -30,6 +43,12 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
     return meta, body
 
 
+def extract_title(body: str, fallback: str) -> str:
+    """Extrai o primeiro # H1 do markdown como título."""
+    match = re.search(r"^#\s+(.+)$", body, re.MULTILINE)
+    return match.group(1).strip() if match else fallback
+
+
 def extract_section(body: str, heading: str) -> str:
     """Extrai o texto de uma seção markdown pelo título."""
     pattern = rf"## {re.escape(heading)}\n+(.*?)(?=\n## |\Z)"
@@ -37,28 +56,67 @@ def extract_section(body: str, heading: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def extract_bullets_from_body(body: str) -> list[str]:
+    """Extrai até 3 itens de lista do corpo do arquivo."""
+    lines = [l.lstrip("*-• ").strip() for l in body.splitlines() if re.match(r"^\s*[-*•]\s+", l)]
+    return [l for l in lines if l][:3]
+
+
+def first_paragraph(body: str) -> str:
+    """Retorna o primeiro parágrafo de texto simples (sem markdown)."""
+    for line in body.splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and not line.startswith(">") and not line.startswith("|"):
+            return re.sub(r"\*+|`", "", line)[:200]
+    return ""
+
+
 def load_cards() -> list[dict]:
     cards = []
-    for md_file in sorted(INBOX_DIR.glob("*.md"), reverse=True):
-        text = md_file.read_text(encoding="utf-8")
-        meta, body = parse_frontmatter(text)
-        if not meta:
+    for content_dir, default_tema in CONTENT_DIRS:
+        if not content_dir.exists():
             continue
+        for md_file in sorted(content_dir.glob("*.md"), reverse=True):
+            if md_file.name in SKIP_FILES:
+                continue
+            text = md_file.read_text(encoding="utf-8")
+            meta, body = parse_frontmatter(text)
 
-        bullets_raw = extract_section(body, "Resumo")
-        bullets = [line.lstrip("- ").strip() for line in bullets_raw.splitlines() if line.strip().startswith("-")]
+            # Arquivos com frontmatter (07-inbox): usa campos diretamente
+            if meta:
+                bullets_raw = extract_section(body, "Resumo")
+                bullets = [line.lstrip("- ").strip() for line in bullets_raw.splitlines() if line.strip().startswith("-")]
+                importancia = extract_section(body, "Por que isso importa")
+                titulo = meta.get("titulo", md_file.stem)
+                tema = meta.get("tema", default_tema or "outros")
+                url = meta.get("url", "#")
+                data = meta.get("data", "")
+            else:
+                # Arquivos sem frontmatter: extrai título do H1, bullets da lista, resumo do primeiro parágrafo
+                titulo = extract_title(body, md_file.stem.replace("-", " ").title())
+                tema = default_tema or "outros"
+                url = "#"
+                data = ""
+                bullets_section = extract_section(body, "Resumo")
+                if bullets_section:
+                    bullets = [l.lstrip("- ").strip() for l in bullets_section.splitlines() if l.strip().startswith("-")]
+                else:
+                    bullets = extract_bullets_from_body(body)
+                importancia = first_paragraph(body)
 
-        importancia = extract_section(body, "Por que isso importa")
+            if not bullets:
+                bullets = [first_paragraph(body)] if first_paragraph(body) else ["Ver conteúdo completo no repo"]
 
-        cards.append({
-            "titulo": meta.get("titulo", md_file.stem),
-            "tema": meta.get("tema", "outros"),
-            "url": meta.get("url", "#"),
-            "data": meta.get("data", ""),
-            "bullets": bullets,
-            "importancia": importancia,
-            "filename": md_file.name,
-        })
+            cards.append({
+                "titulo": titulo,
+                "tema": tema,
+                "url": url,
+                "data": data,
+                "bullets": bullets,
+                "importancia": importancia,
+                "filename": md_file.name,
+                "pasta": content_dir.name,
+            })
     return cards
 
 
@@ -77,11 +135,12 @@ TEMA_CORES = {
 def card_html(card: dict) -> str:
     bullets_html = "".join(f"<li>{b}</li>" for b in card["bullets"])
     cor = TEMA_CORES.get(card["tema"], "#757575")
+    data_str = f'<span class="data">{card["data"]}</span>' if card["data"] else f'<span class="data pasta">{card["pasta"]}</span>'
     return f"""
 <article class="card" data-tema="{card['tema']}" data-titulo="{card['titulo'].lower()}" data-importancia="{card['importancia'].lower()}">
   <div class="card-header">
     <span class="tag" style="background:{cor}">{card['tema']}</span>
-    <span class="data">{card['data']}</span>
+    {data_str}
   </div>
   <h2><a href="{card['url']}" target="_blank" rel="noopener">{card['titulo']}</a></h2>
   <ul>{bullets_html}</ul>
