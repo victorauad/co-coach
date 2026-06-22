@@ -1,5 +1,96 @@
 [
   {
+    "titulo": "\"VS Code: Tips & Tricks de Produtividade\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/tips-and-tricks",
+    "data": "2026-06-22",
+    "bullets": [
+      "Funcionalidades escondidas e atalhos que fazem diferença no dia a dia."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Temas e Personalização Visual\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/themes",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como personalizar a aparência do VS Code — cores, ícones e fontes."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Terminal Integrado\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/terminal/basics",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como usar e personalizar o terminal embutido no VS Code — sem precisar alternar janelas."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Configurações (Settings)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/settings",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como abrir, entender e personalizar as configurações do VS Code."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Tutorial Completo de Python\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/python/python-tutorial",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo para configurar e usar Python no VS Code, incluindo execução de scripts e debugging."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Ambientes Python (venv, conda, pyenv)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/python/environments",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como gerenciar ambientes virtuais Python no VS Code — criação, seleção e gerenciamento de pacotes."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Profiles (Perfis de Configuração)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/editor/profiles",
+    "data": "2026-06-22",
+    "bullets": [
+      "Profiles permitem criar conjuntos de configurações e alternar entre eles rapidamente — ou compartilhá-los com outras pessoas."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
     "titulo": "\"VS Code: Atalhos de Teclado e Personalização\"",
     "tema": "ferramentas",
     "url": "https://code.visualstudio.com/docs/getstarted/keybindings",
@@ -13,12 +104,77 @@
     "github_stars": ""
   },
   {
+    "titulo": "\"VS Code: Jupyter Notebooks — Guia Completo\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/datascience/jupyter-notebooks",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo para criar, editar e executar notebooks Jupyter diretamente no VS Code — sem precisar do browser tradicional."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
     "titulo": "\"VS Code: Interface e Navegação\"",
     "tema": "ferramentas",
     "url": "https://code.visualstudio.com/docs/getstarted/userinterface",
     "data": "2026-06-22",
     "bullets": [
       "Guia completo dos componentes da interface do VS Code e como navegar com eficiência."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Git e Controle de Versão\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/sourcecontrol/overview",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como usar Git diretamente no VS Code sem precisar do terminal para operações comuns."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Extensões — Instalar, Gerenciar e Recomendar\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/editor/extension-marketplace",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como encontrar, instalar, configurar e recomendar extensões no VS Code."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Tutorial de Data Science (Titanic + ML)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/datascience/data-science-tutorial",
+    "data": "2026-06-22",
+    "bullets": [
+      "Tutorial completo da Anthropic cobrindo análise de dados reais, visualização e modelo de machine learning dentro do VS Code com Jupyter Notebooks."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: GitHub Copilot e Recursos de IA\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/copilot/ai-powered-suggestions",
+    "data": "2026-06-22",
+    "bullets": [
+      "Recursos de inteligência artificial disponíveis no VS Code para aumentar produtividade."
     ],
     "importancia": "",
     "fonte": "vscode-docs",
