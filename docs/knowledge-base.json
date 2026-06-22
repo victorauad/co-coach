@@ -1,5 +1,31 @@
 [
   {
+    "titulo": "\"VS Code: Atalhos de Teclado e Personalização\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/keybindings",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo de atalhos e como personalizar o teclado no VS Code."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Interface e Navegação\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/userinterface",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo dos componentes da interface do VS Code e como navegar com eficiência."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
     "titulo": "Repomix — comprime o projeto inteiro para o Claude ler de uma vez",
     "tema": "ferramentas",
     "url": "https://github.com/yamadashy/repomix",
