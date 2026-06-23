@@ -1,5 +1,187 @@
 [
   {
+    "titulo": "\"VS Code: Tips & Tricks de Produtividade\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/tips-and-tricks",
+    "data": "2026-06-22",
+    "bullets": [
+      "Funcionalidades escondidas e atalhos que fazem diferença no dia a dia."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Temas e Personalização Visual\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/themes",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como personalizar a aparência do VS Code — cores, ícones e fontes."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Terminal Integrado\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/terminal/basics",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como usar e personalizar o terminal embutido no VS Code — sem precisar alternar janelas."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Configurações (Settings)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/settings",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como abrir, entender e personalizar as configurações do VS Code."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Tutorial Completo de Python\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/python/python-tutorial",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo para configurar e usar Python no VS Code, incluindo execução de scripts e debugging."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Ambientes Python (venv, conda, pyenv)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/python/environments",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como gerenciar ambientes virtuais Python no VS Code — criação, seleção e gerenciamento de pacotes."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Profiles (Perfis de Configuração)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/editor/profiles",
+    "data": "2026-06-22",
+    "bullets": [
+      "Profiles permitem criar conjuntos de configurações e alternar entre eles rapidamente — ou compartilhá-los com outras pessoas."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Atalhos de Teclado e Personalização\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/keybindings",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo de atalhos e como personalizar o teclado no VS Code."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Jupyter Notebooks — Guia Completo\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/datascience/jupyter-notebooks",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo para criar, editar e executar notebooks Jupyter diretamente no VS Code — sem precisar do browser tradicional."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Interface e Navegação\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/getstarted/userinterface",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia completo dos componentes da interface do VS Code e como navegar com eficiência."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Git e Controle de Versão\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/sourcecontrol/overview",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como usar Git diretamente no VS Code sem precisar do terminal para operações comuns."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Extensões — Instalar, Gerenciar e Recomendar\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/editor/extension-marketplace",
+    "data": "2026-06-22",
+    "bullets": [
+      "Como encontrar, instalar, configurar e recomendar extensões no VS Code."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: Tutorial de Data Science (Titanic + ML)\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/datascience/data-science-tutorial",
+    "data": "2026-06-22",
+    "bullets": [
+      "Tutorial completo da Anthropic cobrindo análise de dados reais, visualização e modelo de machine learning dentro do VS Code com Jupyter Notebooks."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"VS Code: GitHub Copilot e Recursos de IA\"",
+    "tema": "ferramentas",
+    "url": "https://code.visualstudio.com/docs/copilot/ai-powered-suggestions",
+    "data": "2026-06-22",
+    "bullets": [
+      "Recursos de inteligência artificial disponíveis no VS Code para aumentar produtividade."
+    ],
+    "importancia": "",
+    "fonte": "vscode-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
     "titulo": "Repomix — comprime o projeto inteiro para o Claude ler de uma vez",
     "tema": "ferramentas",
     "url": "https://github.com/yamadashy/repomix",
@@ -150,12 +332,168 @@
     "github_stars": "22000"
   },
   {
-    "titulo": "\"Common Workflows — Claude Code Docs\"",
-    "tema": "workflow",
-    "url": "https://code.claude.com/docs/en/common-workflows",
-    "data": "2026-06-23",
+    "titulo": "\"O que são Skills no Claude\"",
+    "tema": "skills",
+    "url": "https://support.claude.com/en/articles/12512176-what-are-skills",
+    "data": "2026-06-22",
     "bullets": [
-      "Visão geral rápida:"
+      "Skills são pastas com instruções, scripts e recursos que o Claude carrega dinamicamente para melhorar o desempenho em tarefas específicas. Funcionam por \"progressive disclosure\" — o Claude identifica "
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Tool Use com Claude — Visão Geral\"",
+    "tema": "agentes",
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use/overview",
+    "data": "2026-06-22",
+    "bullets": [
+      "Tool use permite que o Claude chame funções que você define ou que a Anthropic fornece. O Claude decide quando chamar uma ferramenta com base no pedido do usuário e na descrição da ferramenta."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Curso: Model Context Protocol — Advanced Topics (Skilljar)\"",
+    "tema": "mcp",
+    "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+    "data": "2026-06-22",
+    "bullets": [
+      "Curso avançado sobre recursos sofisticados e padrões de implementação para desenvolvimento de MCP em produção."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Curso: Introduction to Subagents (Skilljar)\"",
+    "tema": "agentes",
+    "url": "https://anthropic.skilljar.com/introduction-to-subagents",
+    "data": "2026-06-22",
+    "bullets": [
+      "Curso gratuito sobre como usar e criar sub-agentes no Claude Code para gerenciar contexto, delegar tarefas e construir workflows especializados."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Curso: Introduction to Model Context Protocol (Skilljar)\"",
+    "tema": "mcp",
+    "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+    "data": "2026-06-22",
+    "bullets": [
+      "Curso prático sobre construção de servidores e clientes MCP usando Python SDK, focando nos três primitivos principais: ferramentas, recursos e prompts."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Curso: Introduction to Agent Skills (Skilljar)\"",
+    "tema": "skills",
+    "url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+    "data": "2026-06-22",
+    "bullets": [
+      "Curso gratuito da Anthropic no Skilljar sobre como construir, configurar e compartilhar Skills no Claude Code."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Curso: Claude Code in Action (Skilljar)\"",
+    "tema": "setup",
+    "url": "https://anthropic.skilljar.com/claude-code-in-action",
+    "data": "2026-06-22",
+    "bullets": [
+      "Treinamento abrangente sobre integrar o Claude Code no fluxo de trabalho de desenvolvimento de software."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"MCP Servers Remotos — Anthropic\"",
+    "tema": "mcp",
+    "url": "https://docs.anthropic.com/en/docs/agents-and-tools/remote-mcp-servers",
+    "data": "2026-06-22",
+    "bullets": [
+      "Servidores MCP remotos permitem que desenvolvedores se conectem via Anthropic MCP connector API a serviços externos sem precisar rodar servidores localmente."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Prompt Engineering — Visão Geral (Anthropic)\"",
+    "tema": "prompts",
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia oficial da Anthropic para engenharia de prompts com Claude."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Roadmap do Model Context Protocol (MCP)\"",
+    "tema": "mcp",
+    "url": "https://modelcontextprotocol.io/development/roadmap",
+    "data": "2026-06-22",
+    "bullets": [
+      "Prioridades estratégicas do MCP para o ecossistema (atualizado março/2026)."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Introdução ao Model Context Protocol (MCP)\"",
+    "tema": "mcp",
+    "url": "https://modelcontextprotocol.io/introduction",
+    "data": "2026-06-22",
+    "bullets": [
+      "MCP é um padrão aberto para conectar aplicações de IA a sistemas externos. É como um \"USB-C para IA\" — fornece uma forma padronizada de conectar aplicações de IA a fontes de dados, ferramentas e workf"
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Integrações de IDE do Claude Code (VS Code e outros)\"",
+    "tema": "setup",
+    "url": "https://docs.anthropic.com/en/docs/claude-code/ide-integrations",
+    "data": "2026-06-22",
+    "bullets": [
+      "A extensão do VS Code é a forma recomendada de usar Claude Code no editor. Oferece painel gráfico nativo, diff side-by-side, @-mentions com número de linha, histórico de conversas e múltiplas abas."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Como Criar Custom Skills no Claude\"",
+    "tema": "skills",
+    "url": "https://support.claude.com/en/articles/12512198-creating-custom-skills",
+    "data": "2026-06-22",
+    "bullets": [
+      "Custom skills permitem adicionar conhecimento especializado e workflows específicos da organização ao Claude. Disponíveis nos planos Free, Pro, Max, Team e Enterprise (requer execução de código ativad"
     ],
     "importancia": "",
     "fonte": "anthropic-docs",
@@ -168,7 +506,33 @@
     "url": "https://code.claude.com/docs/en/skills",
     "data": "2026-06-23",
     "bullets": [
-      "Skills estendem o que Claude pode fazer. Crie um arquivo SKILL.md com instruções, e Claude adiciona-o ao seu toolkit. Claude usa skills quando relevante, ou você pode invocar uma diretamente com /nome"
+      "Skills estendem o que o Claude consegue fazer. Crie um arquivo SKILL.md com instruções, e o Claude adiciona ao seu toolkit. O Claude usa skills quando relevante, ou você pode invocar diretamente com /"
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Common Workflows — Claude Code Docs\"",
+    "tema": "workflow",
+    "url": "https://code.claude.com/docs/en/common-workflows",
+    "data": "2026-06-23",
+    "bullets": [
+      "Receitas para tarefas cotidianas de desenvolvimento: explorar codebases, corrigir bugs, refatorar, testar, criar PRs e mais."
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
+    "titulo": "\"Boas Práticas de Prompt para Claude 4 (e modelos atuais)\"",
+    "tema": "prompts",
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices",
+    "data": "2026-06-22",
+    "bullets": [
+      "Guia oficial da Anthropic para Claude Fable 5, Opus 4.8, Opus 4.6, Sonnet 4.6 e Haiku 4.5."
     ],
     "importancia": "",
     "fonte": "anthropic-docs",
@@ -181,7 +545,7 @@
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
     "data": "2026-06-23",
     "bullets": [
-      "Skills são recursos reutilizáveis baseados em sistema de arquivos que fornecem ao Claude expertise específica de domínio: workflows, contexto e melhores práticas que transformam agentes generalistas e"
+      "Agent Skills são capacidades modulares que estendem a funcionalidade do Claude. Cada Skill empacota instruções, metadados e recursos opcionais (scripts, templates) que o Claude usa automaticamente qua"
     ],
     "importancia": "",
     "fonte": "anthropic-docs",
@@ -189,12 +553,12 @@
     "github_stars": ""
   },
   {
-    "titulo": "\"Agent Skills — Melhores Práticas de Autoria (Anthropic Docs)\"",
+    "titulo": "\"Skill Authoring Best Practices — Anthropic Docs\"",
     "tema": "skills",
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
     "data": "2026-06-23",
     "bullets": [
-      "A janela de contexto é um bem público. Sua Skill compete por espaço com o prompt do sistema, histórico de conversa, metadados de outras Skills e a solicitação real."
+      "O contexto é um bem compartilhado. Sua Skill divide a janela de contexto com o system prompt, histórico da conversa, metadata de outras Skills e a requisição atual."
     ],
     "importancia": "",
     "fonte": "anthropic-docs",

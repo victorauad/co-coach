@@ -7,35 +7,34 @@ fonte: anthropic-docs
 importancia: alta
 ---
 
-# Extend Claude with Skills (Claude Code)
+# Extender o Claude com Skills (Claude Code)
 
-> Crie, gerencie e compartilhe skills para estender as capacidades do Claude no Claude Code. Inclui comandos personalizados e skills agrupadas.
+Skills estendem o que o Claude consegue fazer. Crie um arquivo `SKILL.md` com instruções, e o Claude adiciona ao seu toolkit. O Claude usa skills quando relevante, ou você pode invocar diretamente com `/skill-name`.
 
-Skills estendem o que Claude pode fazer. Crie um arquivo `SKILL.md` com instruções, e Claude adiciona-o ao seu toolkit. Claude usa skills quando relevante, ou você pode invocar uma diretamente com `/nome-da-skill`.
+**Claude Code skills seguem o padrão aberto [Agent Skills](https://agentskills.io)**, que funciona em múltiplas ferramentas de IA. Claude Code estende o padrão com controle de invocação, execução em subagente e injeção de contexto dinâmico.
 
-Crie uma skill quando você fica colando as mesmas instruções, checklist ou procedimento multi-etapas no chat, ou quando uma seção do CLAUDE.md cresceu para se tornar um procedimento em vez de um fato. Ao contrário do conteúdo do CLAUDE.md, o corpo de uma skill carrega apenas quando é usada, então materiais de referência longos custam quase nada até você precisar deles.
+> **Nota**: Comandos customizados foram fundidos em skills. Um arquivo em `.claude/commands/deploy.md` e uma skill em `.claude/skills/deploy/SKILL.md` ambos criam `/deploy` e funcionam da mesma forma.
 
-**Nota:** Comandos personalizados foram integrados às skills. Um arquivo em `.claude/commands/deploy.md` e uma skill em `.claude/skills/deploy/SKILL.md` ambos criam `/deploy` e funcionam da mesma forma.
+## Bundled skills incluídas
 
-Claude Code skills seguem o padrão aberto [Agent Skills](https://agentskills.io), que funciona em múltiplas ferramentas de IA.
+Claude Code inclui skills pré-instaladas:
+- `/code-review` — revisão de código
+- `/batch` — operações em lote
+- `/debug` — depuração
+- `/loop` — loops recorrentes
+- `/claude-api` — referência da API Anthropic
 
-## Skills Agrupadas
-
-Claude Code inclui um conjunto de skills agrupadas disponíveis em toda sessão, incluindo `/code-review`, `/batch`, `/debug`, `/loop` e `/claude-api`.
-
-### Skills de executar e verificar
-
+Três skills para rodar e verificar o app:
 | Skill | Propósito |
 |-------|-----------|
-| `/run` | Inicia e dirige seu app para ver uma mudança funcionando |
-| `/verify` | Constrói e roda seu app para confirmar que uma mudança de código faz o que deveria |
-| `/run-skill-generator` | Ensina `/run` e `/verify` como construir e iniciar seu projeto |
+| `/run` | Lança e dirige o app para ver mudanças funcionando |
+| `/verify` | Constrói e roda o app para confirmar que uma mudança funciona |
+| `/run-skill-generator` | Ensina `/run` e `/verify` como construir e lançar seu projeto |
 
-## Criar sua primeira skill
-
-Exemplo — skill que resume mudanças não commitadas e sinaliza riscos:
+## Criando sua primeira skill
 
 ```bash
+# Crie o diretório da skill (skills pessoais disponíveis em todos os projetos)
 mkdir -p ~/.claude/skills/summarize-changes
 ```
 
@@ -52,39 +51,65 @@ description: Summarizes uncommitted changes and flags anything risky. Use when t
 
 ## Instructions
 
-Summarize the changes above in two or three bullet points, then list any risks you notice such as missing error handling, hardcoded values, or tests that need updating. If the diff is empty, say there are no uncommitted changes.
+Summarize the changes above in two or three bullet points, then list any risks you notice such as missing error handling, hardcoded values, or tests that need updating.
 ```
 
-A linha `` !`git diff HEAD` `` usa injeção dinâmica de contexto: Claude Code roda o comando e substitui a linha com sua saída antes do Claude ver o conteúdo da skill.
+A sintaxe `` !`git diff HEAD` `` usa **injeção de contexto dinâmico**: o Claude Code roda o comando e substitui a linha pelo output antes que o Claude veja o conteúdo da skill.
 
-## Onde skills ficam
+## Onde skills ficam armazenadas
 
-| Localização | Caminho | Aplica a |
-|-------------|---------|----------|
-| Enterprise | Ver managed settings | Todos os usuários da organização |
-| Pessoal | `~/.claude/skills/<nome>/SKILL.md` | Todos os seus projetos |
-| Projeto | `.claude/skills/<nome>/SKILL.md` | Este projeto apenas |
-| Plugin | `<plugin>/skills/<nome>/SKILL.md` | Onde plugin está habilitado |
+| Localização | Caminho | Aplica-se a |
+|-------------|---------|-------------|
+| Enterprise | Veja managed settings | Todos os usuários da organização |
+| Personal | `~/.claude/skills/<skill-name>/SKILL.md` | Todos os seus projetos |
+| Project | `.claude/skills/<skill-name>/SKILL.md` | Este projeto apenas |
+| Plugin | `<plugin>/skills/<skill-name>/SKILL.md` | Onde o plugin está habilitado |
 
-Quando skills compartilham o mesmo nome em diferentes níveis: enterprise > pessoal > projeto.
+**Precedência**: enterprise > personal > project. Skills com o mesmo nome em níveis diferentes fazem override — um `code-review` no `.claude/skills/` do projeto substitui o bundled `/code-review`.
 
-## Frontmatter de referência
+## Estrutura de uma skill
 
-| Campo | Obrigatório | Descrição |
-|-------|-------------|-----------|
-| `name` | Não | Nome de exibição. Padrão: nome do diretório |
-| `description` | Recomendado | O que a skill faz e quando usá-la |
-| `when_to_use` | Não | Contexto adicional sobre quando Claude deve invocar a skill |
-| `disable-model-invocation` | Não | `true` para impedir Claude de carregar automaticamente. Use para workflows com efeitos colaterais |
-| `user-invocable` | Não | `false` para ocultar do menu `/`. Use para conhecimento de fundo |
-| `allowed-tools` | Não | Ferramentas que Claude pode usar sem pedir permissão quando esta skill está ativa |
-| `context` | Não | `fork` para rodar em um subagente isolado |
-| `agent` | Não | Qual tipo de subagente usar quando `context: fork` está definido |
-| `paths` | Não | Padrões glob que limitam quando esta skill é ativada |
+```text
+my-skill/
+├── SKILL.md           # Instruções principais (obrigatório)
+├── template.md        # Template para o Claude preencher
+├── examples/
+│   └── sample.md      # Exemplo de output
+└── scripts/
+    └── validate.sh    # Script que o Claude pode executar
+```
+
+## Frontmatter reference
+
+```yaml
+---
+name: my-skill                    # Nome de exibição (opcional)
+description: What this skill does # RECOMENDADO — Claude usa para decidir quando aplicar
+disable-model-invocation: true    # Apenas você pode invocar (não o Claude automaticamente)
+user-invocable: false             # Apenas o Claude pode invocar (não aparece no menu /)
+allowed-tools: Read Grep          # Ferramentas pré-aprovadas enquanto a skill está ativa
+disallowed-tools: AskUserQuestion # Ferramentas removidas do pool durante a skill
+context: fork                     # Roda em subagente isolado
+agent: Explore                    # Qual tipo de subagente usar com context: fork
+model: claude-opus-4-8            # Modelo a usar quando a skill está ativa
+effort: high                      # Nível de esforço (low/medium/high/xhigh/max)
+paths: "src/**/*.ts"             # Glob — skill ativada apenas com arquivos matching
+---
+```
+
+## Controle de invocação
+
+| Frontmatter | Você pode invocar | Claude pode invocar |
+|-------------|------------------|---------------------|
+| (padrão) | Sim | Sim |
+| `disable-model-invocation: true` | Sim | Não |
+| `user-invocable: false` | Não | Sim |
+
+Use `disable-model-invocation: true` para workflows com efeitos colaterais como `/commit`, `/deploy`, `/send-slack-message`.
 
 ## Injeção de contexto dinâmico
 
-O `` !`<comando>` `` roda comandos shell antes do conteúdo da skill ser enviado ao Claude:
+A sintaxe `` !`<command>` `` roda comandos shell antes que o conteúdo da skill seja enviado ao Claude:
 
 ```yaml
 ---
@@ -99,14 +124,31 @@ allowed-tools: Bash(gh *)
 - PR diff: !`gh pr diff`
 - PR comments: !`gh pr view --comments`
 - Changed files: !`gh pr diff --name-only`
-
-## Your task
-Summarize this pull request...
 ```
 
-## Rodar skills em subagente
+Para múltiplas linhas, use bloco de código com ` ```! `:
+```
+## Environment
+```!
+node --version
+npm --version
+git status --short
+```
+```
 
-Adicione `context: fork` ao frontmatter quando quiser que uma skill rode em isolamento:
+## Substituições disponíveis
+
+| Variável | Descrição |
+|----------|-----------|
+| `$ARGUMENTS` | Todos os argumentos passados ao invocar |
+| `$ARGUMENTS[N]` | Argumento específico por índice (base 0) |
+| `$0`, `$1`, etc. | Atalho para `$ARGUMENTS[N]` |
+| `$name` | Argumento nomeado declarado em `arguments:` |
+| `${CLAUDE_SESSION_ID}` | ID da sessão atual |
+| `${CLAUDE_EFFORT}` | Nível de esforço atual |
+| `${CLAUDE_SKILL_DIR}` | Diretório contendo o SKILL.md da skill |
+
+## Executar skills em subagente
 
 ```yaml
 ---
@@ -122,44 +164,22 @@ Research $ARGUMENTS thoroughly:
 3. Summarize findings with specific file references
 ```
 
-## Passagem de argumentos
+## Detecção de mudanças em tempo real
 
-```yaml
----
-name: fix-issue
-description: Fix a GitHub issue
-disable-model-invocation: true
----
-
-Fix GitHub issue $ARGUMENTS following our coding standards.
-```
-
-Rodar `/fix-issue 123` substitui `$ARGUMENTS` por "123".
-
-## Detectar mudanças em tempo real
-
-Claude Code monitora diretórios de skills para mudanças de arquivo. Adicionar, editar ou remover uma skill entra em vigor na sessão atual sem reiniciar.
-
-## Ciclo de vida do conteúdo da skill
-
-Quando você ou Claude invocam uma skill, o conteúdo renderizado do `SKILL.md` entra na conversa como uma única mensagem e fica lá pelo resto da sessão.
-
-## Avaliar e iterar em uma skill
-
-O plugin [`skill-creator`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator) automatiza o loop de comparação dentro do Claude Code:
-
-```
-/plugin install skill-creator@claude-plugins-official
-```
-
-Funcionalidades:
-- **Casos de teste**: armazena prompts, arquivos de entrada e comportamento esperado
-- **Execuções isoladas**: gera um subagente por caso de teste
-- **Avaliação**: verifica cada asserção contra o output
-- **Benchmark**: agrega taxa de aprovação, tempo e tokens com vs. sem skill
+Claude Code monitora diretórios de skills. Adicionar, editar ou remover uma skill toma efeito na sessão atual sem reiniciar.
 
 ## Compartilhar skills
 
-- **Project skills**: Commit `.claude/skills/` para controle de versão
-- **Plugins**: Crie um diretório `skills/` no seu plugin
-- **Managed**: Deploy em toda organização via managed settings
+- **Skills de projeto**: commitar `.claude/skills/` no controle de versão
+- **Plugins**: criar diretório `skills/` no plugin
+- **Managed**: distribuir via managed settings da organização
+
+## Avaliação de skills
+
+Use o plugin `skill-creator` para automatizar o loop de comparação:
+
+```text
+/plugin install skill-creator@claude-plugins-official
+```
+
+O plugin gera casos de teste, roda comparações com/sem a skill, faz grading e produz relatório HTML com métricas de pass rate, tempo e tokens.

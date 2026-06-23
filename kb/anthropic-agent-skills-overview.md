@@ -9,44 +9,47 @@ importancia: alta
 
 # Agent Skills — Visão Geral
 
-## Por que usar Skills
+## O que são Agent Skills
 
-Skills são recursos reutilizáveis baseados em sistema de arquivos que fornecem ao Claude expertise específica de domínio: workflows, contexto e melhores práticas que transformam agentes generalistas em especialistas. Ao contrário de prompts (instruções de nível de conversa para tarefas únicas), Skills carregam sob demanda e eliminam a necessidade de fornecer as mesmas orientações repetidamente.
+Agent Skills são capacidades modulares que estendem a funcionalidade do Claude. Cada Skill empacota instruções, metadados e recursos opcionais (scripts, templates) que o Claude usa automaticamente quando relevante.
 
 **Benefícios principais:**
-- **Especialize o Claude**: adapte capacidades para tarefas específicas de domínio
-- **Reduza repetição**: crie uma vez, use automaticamente
-- **Componha capacidades**: combine Skills para criar workflows complexos
+- **Especializar o Claude**: adaptar capacidades para tarefas específicas de domínio
+- **Reduzir repetição**: criar uma vez, usar automaticamente
+- **Compor capacidades**: combinar Skills para construir workflows complexos
 
 ## Como Skills funcionam — 3 níveis de carregamento
 
-Skills aproveitam o ambiente de VM do Claude para fornecer capacidades além do que é possível apenas com prompts. Claude opera em uma máquina virtual com acesso ao sistema de arquivos.
+Skills operam num ambiente de VM onde o Claude tem acesso ao filesystem, comandos bash e execução de código.
 
-### Nível 1: Metadados (sempre carregados)
-O frontmatter YAML da Skill fornece informações de descoberta:
+### Nível 1: Metadata (sempre carregada)
+O frontmatter YAML da Skill fornece informações de descoberta (~100 tokens por Skill):
 ```yaml
 ---
 name: pdf-processing
 description: Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.
 ---
 ```
-Claude carrega esses metadados na inicialização. Abordagem leve: você pode instalar muitas Skills sem penalidade de contexto.
 
-### Nível 2: Instruções (carregadas quando acionadas)
-O corpo principal do SKILL.md contém conhecimento procedimental: workflows, melhores práticas e orientações. Quando o usuário solicita algo que corresponde à descrição de uma Skill, Claude lê SKILL.md via bash.
+### Nível 2: Instruções (carregadas quando ativada)
+O corpo principal do SKILL.md com workflows, boas práticas e orientações (<5k tokens).
 
 ### Nível 3: Recursos e código (carregados conforme necessário)
-Skills podem agrupar materiais adicionais: outros arquivos .md, scripts executáveis e recursos de referência. Claude acessa esses arquivos apenas quando referenciados.
+Scripts executáveis, arquivos de referência, templates — sem limite prático de tamanho porque não consomem contexto até serem acessados.
 
-| Nível | Quando Carregado | Custo de Tokens | Conteúdo |
-|-------|-----------------|-----------------|---------|
-| Metadados | Sempre (na inicialização) | ~100 tokens por Skill | name e description do frontmatter YAML |
-| Instruções | Quando Skill é acionada | Menos de 5k tokens | Corpo do SKILL.md |
-| Recursos | Conforme necessário | Efetivamente ilimitado | Arquivos agrupados executados via bash |
+| Nível | Quando Carregado | Custo em Tokens |
+|-------|-----------------|-----------------|
+| Nível 1: Metadata | Sempre (na inicialização) | ~100 tokens por Skill |
+| Nível 2: Instruções | Quando Skill é ativada | Menos de 5k tokens |
+| Nível 3+: Recursos | Conforme necessário | Efetivamente ilimitado |
+
+## Onde Skills funcionam
+
+- **Claude API**: Skills pré-construídas e customizadas via parâmetro `skill_id`
+- **Claude Code**: apenas Skills customizadas baseadas em filesystem
+- **claude.ai**: Skills pré-construídas e customizadas (upload como .zip)
 
 ## Estrutura de uma Skill
-
-Toda Skill requer um arquivo `SKILL.md` com frontmatter YAML:
 
 ```yaml
 ---
@@ -57,52 +60,39 @@ description: Brief description of what this Skill does and when to use it
 # Your Skill Name
 
 ## Instructions
-[Clear, step-by-step guidance for Claude to follow]
+[Orientações claras e passo a passo para o Claude seguir]
 
 ## Examples
-[Concrete examples of using this Skill]
+[Exemplos concretos de uso desta Skill]
 ```
 
 **Campos obrigatórios:** `name` e `description`
 
-Requisitos do campo `name`:
-- Máximo 64 caracteres
-- Apenas letras minúsculas, números e hífens
-- Sem tags XML
-- Sem palavras reservadas: "anthropic", "claude"
+Requisitos:
+- `name`: máx 64 chars, apenas letras minúsculas/números/hífens, sem palavras reservadas "anthropic" ou "claude"
+- `description`: não vazio, máx 1024 chars, sem tags XML, deve incluir o que faz E quando usar
 
-## Onde Skills funcionam
+## Skills pré-construídas disponíveis
 
-### Claude API
-Suporta Skills pré-construídas e personalizadas. Especifique o `skill_id` relevante no parâmetro `container`. Requer três headers beta: `code-execution-2025-08-25`, `skills-2025-10-02`, `files-api-2025-04-14`.
+- **PowerPoint (pptx)**: criar apresentações, editar slides
+- **Excel (xlsx)**: criar planilhas, analisar dados, gerar relatórios
+- **Word (docx)**: criar documentos, editar conteúdo
+- **PDF (pdf)**: gerar documentos PDF formatados
 
-### Claude Code
-Suporta apenas Skills Personalizadas. Crie Skills como diretórios com arquivos SKILL.md. Claude descobre e usa automaticamente. Skills são baseadas em sistema de arquivos e não requerem uploads de API.
+## Arquitetura
 
-### claude.ai
-Suporta Skills pré-construídas e personalizadas. Skills personalizadas são específicas de usuário (não compartilhadas por organização).
+Skills rodam num ambiente de execução de código onde o Claude tem acesso ao filesystem via bash. O acesso progressivo garante que apenas conteúdo relevante ocupe a janela de contexto a qualquer momento.
 
-## Skills Pré-construídas disponíveis
-
-- **PowerPoint (pptx)**: Crie apresentações, edite slides
-- **Excel (xlsx)**: Crie planilhas, analise dados, gere relatórios com gráficos
-- **Word (docx)**: Crie documentos, edite conteúdo, formate texto
-- **PDF (pdf)**: Gere documentos PDF formatados e relatórios
+Exemplo de fluxo:
+1. **Startup**: sistema inclui metadata: `PDF Processing - Extract text and tables...`
+2. **Pedido do usuário**: "Extraia o texto deste PDF"
+3. **Claude invoca**: `bash: read pdf-skill/SKILL.md` → Instruções carregadas no contexto
+4. **Claude executa**: usa instruções do SKILL.md para completar a tarefa
 
 ## Considerações de segurança
 
-Use Skills apenas de fontes confiáveis. Skills fornecem ao Claude novas capacidades através de instruções e código — uma Skill maliciosa pode direcionar o Claude a invocar ferramentas de maneiras prejudiciais. Trate a instalação de uma Skill como instalar software: audite todos os arquivos antes de usar.
+Use Skills apenas de fontes confiáveis. Skills fornecem ao Claude novas capacidades via instruções e código — Skills maliciosas podem direcionar invocações de ferramentas de maneiras prejudiciais, incluindo exfiltração de dados e acesso não autorizado ao sistema.
 
-## Limitações importantes
+## Retenção de dados
 
-- Skills personalizadas não sincronizam entre superfícies (claude.ai, API e Claude Code são separados)
-- claude.ai: Skills são individuais por usuário
-- Claude API: Skills são por workspace (todos os membros do workspace têm acesso)
-- Claude Code: Personal (`~/.claude/skills/`) ou por projeto (`.claude/skills/`)
-- Claude API não tem acesso à rede nas Skills e não permite instalação de pacotes em runtime
-
-## Links relacionados
-
-- [Boas práticas de autoria](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)
-- [Skills no Claude Code](https://code.claude.com/docs/en/skills)
-- [Guia de Skills com a API](https://platform.claude.com/docs/en/build-with-claude/skills-guide)
+Agent Skills não é coberta por acordos ZDR (Zero Data Retention). Dados são retidos conforme a política padrão da Anthropic.
