@@ -501,6 +501,19 @@
     "github_stars": ""
   },
   {
+    "titulo": "\"Common Workflows — Claude Code Docs\"",
+    "tema": "workflow",
+    "url": "https://code.claude.com/docs/en/common-workflows",
+    "data": "2026-06-23",
+    "bullets": [
+      "Visão geral rápida:"
+    ],
+    "importancia": "",
+    "fonte": "anthropic-docs",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
     "titulo": "\"Extend Claude with Skills — Claude Code Docs\"",
     "tema": "skills",
     "url": "https://code.claude.com/docs/en/skills",
