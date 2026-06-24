@@ -1,0 +1,5 @@
+# Repos que recebem auto-sync de skills quando skills/ muda no co-coach.
+# Adicione novos projetos aqui após criá-los com setup-project.yml.
+repos:
+  - victorauad/iracing_analysis
+  - victorauad/alamtoco

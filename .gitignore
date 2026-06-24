@@ -13,6 +13,10 @@ credentials*.json
 .claude/*
 !.claude/settings.json
 
+# Arquivos gerados — gerenciados exclusivamente pelo CI (reindex-weekly.yml)
+# Nunca commitar localmente para evitar conflitos com o GitHub Actions
+docs/
+
 # Python
 __pycache__/
 *.pyc

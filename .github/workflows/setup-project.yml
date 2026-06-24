@@ -1,0 +1,183 @@
+name: Setup Novo Projeto com co-coach
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_repo:
+        description: "Repo alvo (ex: victorauad/novo-projeto)"
+        required: true
+        type: string
+      add_to_sync:
+        description: "Adicionar ao sync automático (config/sync-targets.yml)?"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout co-coach
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Instalar todas as skills no repo alvo
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          TARGET_REPO: ${{ inputs.target_repo }}
+        run: |
+          set -e
+
+          echo "=== Instalando skills em: $TARGET_REPO ==="
+
+          for skill_dir in skills/*/; do
+            skill_name=$(basename "$skill_dir")
+            skill_file="$skill_dir/SKILL.md"
+
+            if [ ! -f "$skill_file" ]; then
+              echo "  Pulando $skill_name (sem SKILL.md)"
+              continue
+            fi
+
+            target_path=".claude/skills/$skill_name/SKILL.md"
+            encoded_content=$(base64 -w 0 "$skill_file")
+
+            sha_param=""
+            response=$(curl -s -w "%{http_code}" -o /tmp/skill_check.json \
+              -H "Authorization: Bearer $GH_PAT" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$TARGET_REPO/contents/$target_path")
+
+            if [ "$response" = "200" ]; then
+              sha=$(python3 -c "import sys, json; print(json.load(open('/tmp/skill_check.json')).get('sha',''))")
+              sha_param=", \"sha\": \"$sha\""
+            fi
+
+            http_status=$(curl -s -o /tmp/api_response.json -w "%{http_code}" \
+              -X PUT \
+              -H "Authorization: Bearer $GH_PAT" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$TARGET_REPO/contents/$target_path" \
+              -d "{\"message\": \"skill: instalar $skill_name via co-coach\", \"content\": \"$encoded_content\"$sha_param}")
+
+            if [ "$http_status" = "200" ] || [ "$http_status" = "201" ]; then
+              echo "  ✅ $skill_name"
+            else
+              echo "  ❌ Erro em $skill_name (HTTP $http_status):"
+              cat /tmp/api_response.json
+              exit 1
+            fi
+          done
+
+          echo ""
+          echo "Skills instaladas em $TARGET_REPO/.claude/skills/"
+
+      - name: Criar .claude/settings.json no repo alvo
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          TARGET_REPO: ${{ inputs.target_repo }}
+        run: |
+          set -e
+
+          settings_path=".claude/settings.json"
+          encoded=$(base64 -w 0 "05-templates/project-settings.json")
+
+          sha_param=""
+          response=$(curl -s -w "%{http_code}" -o /tmp/settings_check.json \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$TARGET_REPO/contents/$settings_path")
+
+          if [ "$response" = "200" ]; then
+            sha=$(python3 -c "import sys, json; print(json.load(open('/tmp/settings_check.json')).get('sha',''))")
+            sha_param=", \"sha\": \"$sha\""
+            echo "  ℹ️  settings.json já existe — atualizando"
+          fi
+
+          http_status=$(curl -s -o /tmp/api_response.json -w "%{http_code}" \
+            -X PUT \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$TARGET_REPO/contents/$settings_path" \
+            -d "{\"message\": \"chore: adicionar .claude/settings.json base via co-coach\", \"content\": \"$encoded\"$sha_param}")
+
+          if [ "$http_status" = "200" ] || [ "$http_status" = "201" ]; then
+            echo "  ✅ .claude/settings.json criado em $TARGET_REPO"
+          else
+            echo "  ❌ Erro ao criar settings.json (HTTP $http_status):"
+            cat /tmp/api_response.json
+            exit 1
+          fi
+
+      - name: Criar memory/.gitkeep no repo alvo
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          TARGET_REPO: ${{ inputs.target_repo }}
+        run: |
+          set -e
+
+          gitkeep_path="memory/.gitkeep"
+          encoded=$(echo -n "" | base64 -w 0)
+
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$TARGET_REPO/contents/$gitkeep_path")
+
+          if [ "$response" = "200" ]; then
+            echo "  ✓ memory/ já existe em $TARGET_REPO"
+          else
+            http_status=$(curl -s -o /tmp/api_response.json -w "%{http_code}" \
+              -X PUT \
+              -H "Authorization: Bearer $GH_PAT" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$TARGET_REPO/contents/$gitkeep_path" \
+              -d "{\"message\": \"chore: criar pasta memory/ via co-coach\", \"content\": \"$encoded\"}")
+
+            if [ "$http_status" = "200" ] || [ "$http_status" = "201" ]; then
+              echo "  ✅ memory/ criada em $TARGET_REPO"
+            else
+              echo "  ⚠️  Falha ao criar memory/ (HTTP $http_status) — continuando"
+            fi
+          fi
+
+      - name: Adicionar repo ao sync automático
+        if: ${{ inputs.add_to_sync == 'true' }}
+        env:
+          TARGET_REPO: ${{ inputs.target_repo }}
+        run: |
+          set -e
+
+          # Verifica se já está na lista
+          if grep -q "$TARGET_REPO" config/sync-targets.yml; then
+            echo "  ✓ $TARGET_REPO já está em config/sync-targets.yml"
+          else
+            echo "  - $TARGET_REPO" >> config/sync-targets.yml
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add config/sync-targets.yml
+            git commit -m "chore: adicionar $TARGET_REPO ao sync automático de skills"
+            git push
+            echo "  ✅ $TARGET_REPO adicionado a config/sync-targets.yml"
+          fi
+
+      - name: Resumo final
+        env:
+          TARGET_REPO: ${{ inputs.target_repo }}
+        run: |
+          echo ""
+          echo "================================================"
+          echo "✅ Projeto $TARGET_REPO configurado com co-coach"
+          echo "================================================"
+          echo ""
+          echo "O que foi criado:"
+          echo "  • .claude/skills/  → 30+ skills co-coach instaladas"
+          echo "  • .claude/settings.json → configuração base"
+          echo "  • memory/           → pasta para handoffs de sessão"
+          echo ""
+          echo "Próximo passo: abra uma sessão Claude Code no $TARGET_REPO"
+          echo "e invoque /co-coach-setup para configurar o CLAUDE.md do projeto."

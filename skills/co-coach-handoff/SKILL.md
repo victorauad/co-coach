@@ -61,3 +61,15 @@ Leia o arquivo memory/YYYYMMDD-projeto.md e retome de onde paramos. Confirme o q
 ---
 
 Não faça mais nada após imprimir o bloco. A sessão continua aberta para o usuário decidir quando rodar `/clear`.
+
+## 5. (Apenas no projeto co-coach) Sincronizar ao GitHub
+
+Se o working directory for o projeto `co-coach`, execute ao final:
+
+```bash
+git add kb/ skills/ .claude/ scripts/ .github/ config/ 05-templates/
+git diff --staged --quiet || git commit -m "chore: handoff — sync co-coach"
+git push
+```
+
+**Nunca incluir `docs/` no commit** — o GitHub Actions (reindex-weekly.yml) gera e commita `docs/` automaticamente após o push.

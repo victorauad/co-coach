@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git log *)",
+      "Bash(git diff *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[co-coach] Projeto pronto. Skills disponíveis em .claude/skills/ — invoque /co-coach-list para ver todas.'"
+          }
+        ]
+      }
+    ]
+  }
+}
