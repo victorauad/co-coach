@@ -7,6 +7,7 @@ Roda automaticamente após cada ingestão e semanalmente.
 import os
 import re
 import json
+import shutil
 import datetime
 from pathlib import Path
 
@@ -230,6 +231,15 @@ def build_html(cards: list[dict], prof: dict = None) -> str:
     total = len(cards)
     updated = datetime.date.today().strftime("%d/%m/%Y")
 
+    # Contagem por tema para o footer
+    tema_counts = {}
+    for c in cards:
+        tema_counts[c["tema"]] = tema_counts.get(c["tema"], 0) + 1
+    tema_stats = " · ".join(
+        f'<span style="color:{TEMA_CORES.get(t,"#757575")}">{t} {n}</span>'
+        for t, n in sorted(tema_counts.items(), key=lambda x: -x[1])
+    )
+
     cards_json = json.dumps(cards, ensure_ascii=False)
     panel_html = proficiency_panel_html(prof)
 
@@ -265,7 +275,9 @@ def build_html(cards: list[dict], prof: dict = None) -> str:
 </main>
 
 <footer>
-  <p>Alimentado por <a href="https://github.com/victorauad/co-coach">co-coach</a></p>
+  <p>Alimentado por <a href="https://github.com/victorauad/co-coach">co-coach</a> · Rebuild: {updated} · {total} cards</p>
+  <p class="footer-temas">{tema_stats}</p>
+  <p style="margin-top:0.5rem"><a href="aprenda.html">📖 Como funciona</a> · <a href="gerenciador.html">⚙️ Gerenciador</a></p>
 </footer>
 
 <script>
@@ -430,6 +442,7 @@ header h1 { font-size: 1.4rem; }
 
 footer { color: var(--muted); font-size: 0.78rem; padding: 2rem 0 1rem; text-align: center; }
 footer a { color: var(--accent); }
+.footer-temas { margin-top: 0.4rem; font-size: 0.72rem; }
 
 .proficiency-panel {
   background: var(--card-bg);
@@ -495,6 +508,13 @@ def main():
         json.dumps(kb_entries, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+
+    # Copia arquivos estáticos versionados (static/) para docs/
+    static_dir = Path("static")
+    if static_dir.exists():
+        for f in static_dir.iterdir():
+            shutil.copy2(f, DOCS_DIR / f.name)
+        print(f"Arquivos estáticos copiados: {[f.name for f in static_dir.iterdir()]}")
 
     print(f"Site gerado em docs/ ({len(cards)} cards)")
     print(f"Knowledge base exportada: docs/knowledge-base.json ({len(kb_entries)} entradas)")

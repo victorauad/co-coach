@@ -81,7 +81,21 @@ description: descrição em texto corrido (sem listas YAML — quebra o Claude C
 
 ---
 
-## Gerenciador local (`docs/gerenciador.html` + `scripts/server.py`)
+## Arquivos estáticos (`static/`)
+
+**Propósito:** HTMLs versionados no git que precisam ser servidos pelo GitHub Pages mas não são gerados pelo `build-site.py`.
+
+**Como funciona:** o `build-site.py` copia todos os arquivos de `static/` para `docs/` a cada rebuild. Isso garante que eles sobrevivam ao CI sem precisar remover `docs/` do `.gitignore`.
+
+**Arquivos atuais:**
+- `static/aprenda.html` — diagrama visual do sistema para aprendizado (explicação não-técnica)
+- `static/gerenciador.html` — interface de gerenciamento com 4 seções (skills, KB, sync, config)
+
+**Regra:** qualquer arquivo HTML que deve ficar permanentemente em `docs/` vai em `static/`, nunca criado diretamente em `docs/`.
+
+---
+
+## Gerenciador local (`static/gerenciador.html` + `scripts/server.py`)
 
 **Tecnologia:** HTML + Tailwind + JavaScript (frontend) / Python stdlib (backend)
 

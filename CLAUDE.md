@@ -47,28 +47,30 @@ Quando receber uma tarefa, consulte esses três arquivos antes de propor qualque
 
 2. **Feed mobile** — site estático em GitHub Pages (`https://victorauad.github.io/co-coach`) gerado por `scripts/build-site.py`. Cards com filtro por tema e campo de contexto "o que estou fazendo agora".
 
-3. **Skills instaláveis** — arquivos `SKILL.md` em `skills/`, copiados para `.claude/skills/` de outros repos via GitHub Action `install-skills-remote.yml`. Skills atuais: `co-coach-review`, `co-coach-setup`, `co-coach-bigquery`.
+3. **Skills instaláveis** — arquivos `SKILL.md` em `skills/*/`, copiados para `.claude/skills/` de outros repos via GitHub Action `sync-skills.yml`. Para ver skills disponíveis: `ls skills/`.
 
 ## Estrutura real do repositório
 ```
 co-coach/
-├── kb/                          — knowledge base indexada (30+ arquivos .md com frontmatter)
+├── kb/                   — knowledge base indexada (arquivos .md com frontmatter)
+├── static/               — HTMLs versionados copiados para docs/ a cada rebuild
 ├── scripts/
-│   ├── build-site.py            — gera docs/index.html + knowledge-base.json
-│   ├── ingest.py                — fetch + sumarização via Claude Haiku → kb/
-│   └── ingest-github-stars.py  — busca repos estrelados e indexa READMEs
-├── skills/
-│   ├── co-coach-review/SKILL.md
-│   ├── co-coach-setup/SKILL.md
-│   └── co-coach-bigquery/SKILL.md
-├── docs/                        — gerado automaticamente (GitHub Pages)
-├── .github/workflows/
-│   ├── ingest-link.yml          — dispara ao Issue receber label "add-link"
-│   ├── ingest-github-stars.yml  — toda segunda 09h UTC
-│   ├── reindex-weekly.yml       — rebuild do site toda segunda 08h UTC
-│   └── install-skills-remote.yml
-├── 00-comece-aqui/ a 06-ferramentas-e-repos/ — documentação editorial
-└── .claude/settings.json
+│   ├── build-site.py     — gera docs/ completo (index + json + static/)
+│   ├── server.py         — servidor local para o gerenciador (porta 8765)
+│   ├── ingest.py         — fetch + sumarização via Claude Haiku → kb/
+│   └── ingest-github-stars.py
+├── skills/               — 30+ skills co-coach-* (ls skills/ para ver todas)
+├── docs/                 — gerado automaticamente pelo CI (nunca commitar)
+├── config/
+│   └── sync-targets.yml  — repos que recebem auto-sync de skills
+├── requirements.md       — o que o sistema precisa fazer
+├── design.md             — como está construído, decisões técnicas
+├── TASKS.md              — backlog priorizado
+└── .github/workflows/
+    ├── ingest-link.yml        — dispara ao Issue receber label "add-link"
+    ├── ingest-github-stars.yml — toda segunda 09h UTC
+    ├── reindex-weekly.yml      — rebuild do site toda segunda 08h UTC
+    └── sync-skills.yml         — distribui skills para repos registrados
 ```
 
 ## Como usar a knowledge base
