@@ -1,23 +1,21 @@
 # TASKS — co-coach
 
 > Derivado de [STATUS.md](STATUS.md) em 2026-06-24.
+> Atualizado em 2026-06-25 (limpeza pós-handoff).
 > Legenda: `[ ]` pendente · `[x]` feito · `[-]` descartado
 
 ---
 
 ## Prioridade alta
 
-- [ ] **iOS Shortcut** — confirmar que o Shortcut está configurado no iPhone e testar o fluxo completo: URL compartilhada → Issue criada com label `add-link` → card no feed em ≤3 min
 - [ ] **`docs/proficiency.json`** — criar o arquivo com schema de scores por tema e garantir que a skill `co-coach-quiz` escreve e lê nele corretamente
-- [ ] **Estatísticas no feed mobile** — adicionar rodapé ao `docs/index.html` gerado por `scripts/build-site.py` com: data do último rebuild e contagem de cards por tema
-- [ ] **`docs/sistema.html`** — decidir se o arquivo deve ser versionado no repo ou integrado ao `scripts/build-site.py` (atualmente está em `docs/` que o CI sobrescreve a cada rebuild)
-- [ ] **`config/sync-targets.yml`** — registrar novos repos que precisem receber auto-sync de skills
+- [ ] **`config/sync-targets.yml`** — registrar novos repos que precisem receber auto-sync de skills (preencher conforme novos projetos forem criados)
 
 ---
 
 ## Prioridade média
 
-- [ ] **Skill especializada: `co-coach-mmm`** — criar skill para apoiar análise de Marketing Mix Modeling (contexto do projeto iracing ou do trabalho em Martech)
+- [ ] **Skill especializada: `co-coach-mmm`** — criar skill para apoiar análise de Marketing Mix Modeling (contexto do trabalho em Martech)
 - [ ] **Dashboard de sync** — adicionar step ao final de `sync-skills.yml` que gera/atualiza `config/sync-status.md` com: repo, skills instaladas, data do último sync
 - [ ] **Ingestão de playlists do YouTube** — modificar `scripts/ingest.py` para aceitar URLs de playlist e iterar sobre os vídeos
 
@@ -40,3 +38,12 @@
 - [x] Workflow de setup de novo projeto (`setup-project.yml`)
 - [x] Rebuild automático do site por push em `kb/**` ou `skills/**`
 - [x] Memória de sessão via `/co-coach-handoff`
+- [x] Estatísticas no feed mobile (rodapé com data do rebuild e contagem por tema em `docs/index.html`)
+- [x] `static/gerenciador.html` — interface de gerenciamento via browser (porta 8765)
+- [x] `static/aprenda.html` — diagrama visual explicativo do sistema (absorveu o `docs/sistema.html`)
+- [x] `build-site.py` atualizado para copiar `static/` → `docs/` a cada rebuild
+- [x] Spec SDD completa: `requirements.md`, `design.md`, CLAUDE.md atualizado
+
+## Descartado
+
+- [-] **iOS Shortcut** — fluxo URL → Issue → feed descartado; não será implementado

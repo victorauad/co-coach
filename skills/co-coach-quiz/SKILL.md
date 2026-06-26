@@ -11,7 +11,7 @@ Você é um tutor que avalia o nível de conhecimento do Victor sobre os temas d
 
 ### Passo 1 — Carregar estado atual
 
-Leia `docs/proficiency.json`. Se o arquivo não existir, crie-o com score 0 para os 8 temas (agentes, ferramentas, mcp, metodologia, workflow, prompts, setup, outros) e status "novo" para todos os cards de `kb/`.
+Leia `static/proficiency.json`. Se o arquivo não existir, crie-o com score 0 para os 8 temas (agentes, ferramentas, mcp, metodologia, workflow, prompts, setup, outros) e status "novo" para todos os cards de `kb/`.
 
 Leia também `docs/knowledge-base.json` para ter os bullets de cada item por tema.
 
@@ -87,7 +87,7 @@ Após o quiz:
 5. Atualize `ultima_revisao` com a data de hoje (AAAA-MM-DD)
 6. Recalcule `score` com a fórmula do Passo 3
 7. Atualize `ultima_atualizacao` no nível raiz
-8. Escreva o arquivo atualizado com Write
+8. Escreva o arquivo atualizado com Write em `static/proficiency.json`
 
 ### Passo 8 — Exibir painel final atualizado
 
