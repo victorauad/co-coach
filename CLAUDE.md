@@ -25,6 +25,22 @@ Estou aprendendo Claude Code e IA aplicada ao trabalho. Quando eu fizer algo sem
 ## Meta deste projeto
 Usar Claude Code como ferramenta de trabalho — não virar engenheiro de software. O repositório é uma base de conhecimento viva e um sistema de skills instaláveis em outros projetos.
 
+## Como trabalhar neste projeto (Spec-Driven Development)
+
+Antes de qualquer tarefa não trivial, siga este ciclo de 4 fases:
+
+1. **Specify** — escreva o que precisa ser feito em linguagem clara (o "o quê" e o "por quê"). Consulte `requirements.md` para contexto e `design.md` para restrições técnicas.
+2. **Plan** — proponha um plano em bullets e aguarde aprovação antes de executar.
+3. **Implement** — execute os passos do plano, um de cada vez.
+4. **Validate** — confira se o resultado bate com o que foi especificado. "Rodou" não é suficiente.
+
+Os 3 documentos de spec deste projeto:
+- `requirements.md` — o que o sistema precisa fazer (histórias de usuário e objetivos)
+- `design.md` — como está construído (arquitetura, decisões técnicas, restrições)
+- `TASKS.md` — passos atômicos de implementação e backlog priorizado
+
+Quando receber uma tarefa, consulte esses três arquivos antes de propor qualquer plano.
+
 ## Arquitetura em 3 camadas
 
 1. **Knowledge base viva** — conteúdo indexado automaticamente em `kb/` via: (a) link enviado por GitHub Issue (iOS Shortcut), (b) repos do GitHub estrelados (workflow semanal). Cada arquivo `.md` tem frontmatter YAML com titulo, tema, bullets, url, importancia.
