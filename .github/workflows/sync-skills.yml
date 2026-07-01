@@ -13,6 +13,28 @@ jobs:
       - name: Checkout co-coach
         uses: actions/checkout@v4
 
+      - name: Validar skills antes de sincronizar
+        run: |
+          ERROS=0
+          for skill_dir in skills/*/; do
+            skill_name=$(basename "$skill_dir")
+            skill_file="$skill_dir/SKILL.md"
+            if [ ! -f "$skill_file" ]; then
+              echo "❌ $skill_name: SKILL.md ausente" && ERROS=$((ERROS+1))
+              continue
+            fi
+            if ! grep -q "^name:" "$skill_file"; then
+              echo "❌ $skill_name: frontmatter 'name:' ausente" && ERROS=$((ERROS+1))
+            fi
+            if ! grep -q "^description:" "$skill_file"; then
+              echo "❌ $skill_name: frontmatter 'description:' ausente" && ERROS=$((ERROS+1))
+            fi
+          done
+          if [ "$ERROS" -gt 0 ]; then
+            echo "❌ $ERROS erro(s) encontrados — sync abortado" && exit 1
+          fi
+          echo "✅ Todas as skills validadas"
+
       - name: Instalar yq para ler YAML
         run: |
           wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64

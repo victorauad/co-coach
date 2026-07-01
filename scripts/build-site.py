@@ -487,6 +487,93 @@ footer a { color: var(--accent); }
 """
 
 
+SKILL_CATEGORIES = {
+    "Produtividade & Metodologia": [
+        "co-coach-builder", "co-coach-handoff", "co-coach-list",
+        "co-coach-mermaid", "co-coach-obsidian", "co-coach-quiz",
+        "co-coach-repomix", "co-coach-review", "co-coach-sdd",
+        "co-coach-setup", "co-coach-support", "co-coach-ui", "co-coach-wizard",
+    ],
+    "Marketing & Growth": [
+        "co-coach-ads", "co-coach-analytics", "co-coach-competitor",
+        "co-coach-content", "co-coach-copy", "co-coach-market",
+        "co-coach-marketing-plan", "co-coach-research", "co-coach-seo", "co-coach-social",
+    ],
+    "Dados & Automação": [
+        "co-coach-bigquery", "co-coach-digest", "co-coach-xlsx",
+    ],
+    "Documentos & Apresentações": [
+        "co-coach-docx", "co-coach-pdf", "co-coach-pptx",
+    ],
+    "Ferramentas & Integrações": [
+        "co-coach-dify", "co-coach-flowise", "co-coach-notebooklm", "co-coach-onyx",
+    ],
+}
+
+
+def build_skills_readme():
+    skills_dir = Path("skills")
+    if not skills_dir.exists():
+        return
+
+    # Extrai description de cada SKILL.md lendo só até achar a linha
+    descriptions = {}
+    for skill_file in skills_dir.glob("*/SKILL.md"):
+        skill_name = skill_file.parent.name
+        for line in skill_file.read_text(encoding="utf-8").splitlines():
+            if line.startswith("description:"):
+                raw = line[len("description:"):].strip().strip('"')
+                # Primeira frase apenas (até o primeiro ponto final ou 120 chars)
+                short = raw.split(". ")[0].rstrip(".")
+                descriptions[skill_name] = short[:120]
+                break
+
+    lines = [
+        "# Skills do co-coach",
+        "",
+        "Skills instaláveis do Claude Code. Cada pasta tem um `SKILL.md` com frontmatter (`name`, `description`) e instruções.",
+        "",
+        "> **Gerado automaticamente** por `scripts/build-site.py`. Não edite manualmente — as alterações serão sobrescritas no próximo build.",
+        "",
+        "## Convenção de nomenclatura",
+        "",
+        "Toda skill segue o padrão **`co-coach-<palavra>`**. Ao criar uma nova, use a `co-coach-builder`.",
+        "",
+        "---",
+        "",
+    ]
+
+    # Skills sem categoria conhecida vão para "Outras"
+    categorized = {s for skills in SKILL_CATEGORIES.values() for s in skills}
+    uncategorized = [s for s in descriptions if s not in categorized]
+
+    categories = dict(SKILL_CATEGORIES)
+    if uncategorized:
+        categories["Outras"] = sorted(uncategorized)
+
+    for category, skill_names in categories.items():
+        lines.append(f"## {category}")
+        lines.append("")
+        lines.append("| Skill | Função |")
+        lines.append("|-------|--------|")
+        for skill_name in skill_names:
+            desc = descriptions.get(skill_name, "—")
+            lines.append(f"| `{skill_name}` | {desc} |")
+        lines.append("")
+
+    lines += [
+        "---",
+        "",
+        "## Como as skills são distribuídas",
+        "",
+        "O workflow `.github/workflows/sync-skills.yml` copia cada pasta de `skills/` para o `.claude/skills/` dos repos registrados em `config/sync-targets.yml`.",
+        "",
+    ]
+
+    (skills_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
+    print(f"skills/README.md gerado ({len(descriptions)} skills)")
+
+
 def main():
     cards = load_cards()
     print(f"Encontrados {len(cards)} cards em kb/")
@@ -510,11 +597,18 @@ def main():
     )
 
     # Copia arquivos estáticos versionados (static/) para docs/
+    # config.local.js é gitignored e contém o PAT — nunca deve ir para docs/
+    STATIC_EXCLUDE = {"config.local.js"}
     static_dir = Path("static")
     if static_dir.exists():
+        copied = []
         for f in static_dir.iterdir():
-            shutil.copy2(f, DOCS_DIR / f.name)
-        print(f"Arquivos estáticos copiados: {[f.name for f in static_dir.iterdir()]}")
+            if f.name not in STATIC_EXCLUDE:
+                shutil.copy2(f, DOCS_DIR / f.name)
+                copied.append(f.name)
+        print(f"Arquivos estáticos copiados: {copied}")
+
+    build_skills_readme()
 
     print(f"Site gerado em docs/ ({len(cards)} cards)")
     print(f"Knowledge base exportada: docs/knowledge-base.json ({len(kb_entries)} entradas)")

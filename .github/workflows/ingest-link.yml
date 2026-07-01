@@ -41,6 +41,30 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: python scripts/ingest.py
 
+      - name: Validar arquivo gerado
+        run: |
+          LATEST=$(ls -t kb/*.md 2>/dev/null | head -1)
+          if [ -z "$LATEST" ]; then
+            echo "❌ Nenhum arquivo .md encontrado em kb/" && exit 1
+          fi
+          LINES=$(wc -l < "$LATEST")
+          if [ "$LINES" -lt 5 ]; then
+            echo "❌ Arquivo gerado muito pequeno ($LINES linhas): $LATEST" && exit 1
+          fi
+          if ! grep -q "^titulo:" "$LATEST"; then
+            echo "❌ Frontmatter 'titulo:' ausente em $LATEST" && exit 1
+          fi
+          echo "✅ Arquivo válido: $LATEST ($LINES linhas)"
+
+      - name: Atualizar CHANGELOG da KB
+        run: |
+          LATEST=$(ls -t kb/*.md | head -1)
+          TITULO=$(grep "^titulo:" "$LATEST" | sed 's/titulo: //' | tr -d '"')
+          URL="${{ steps.extract.outputs.url }}"
+          DATA=$(date -u +"%Y-%m-%d")
+          echo "- $DATA | [$TITULO]($URL)" >> kb/CHANGELOG.md
+          echo "Entrada adicionada ao CHANGELOG: $TITULO"
+
       - name: Rebuild site
         run: python scripts/build-site.py
 
@@ -48,7 +72,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add kb/ docs/
+          git add kb/ docs/ skills/README.md
           git diff --staged --quiet && echo "Nada para commitar" && exit 0
           git commit -m "feat: ingest link from issue #${{ github.event.issue.number }}"
           git pull --rebase origin main
