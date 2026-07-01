@@ -1,4 +1,5 @@
 # Dados sensíveis — nunca versionar
+static/config.local.js
 *.csv
 *.xlsx
 *.xls
