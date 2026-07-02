@@ -8,15 +8,14 @@
 
 ## Prioridade alta
 
-- [ ] **`docs/proficiency.json`** — criar o arquivo com schema de scores por tema e garantir que a skill `co-coach-quiz` escreve e lê nele corretamente
-- [ ] **`config/sync-targets.yml`** — registrar novos repos que precisem receber auto-sync de skills (preencher conforme novos projetos forem criados)
+- [x] **`docs/proficiency.json`** — criar o arquivo com schema de scores por tema e garantir que a skill `co-coach-quiz` escreve e lê nele corretamente
+- [x] **`config/sync-targets.yml`** — registrar novos repos que precisem receber auto-sync de skills (preencher conforme novos projetos forem criados)
 
 ---
 
 ## Prioridade média
 
-- [ ] **Skill especializada: `co-coach-mmm`** — criar skill para apoiar análise de Marketing Mix Modeling (contexto do trabalho em Martech)
-- [ ] **Dashboard de sync** — adicionar step ao final de `sync-skills.yml` que gera/atualiza `config/sync-status.md` com: repo, skills instaladas, data do último sync
+- [x] **Dashboard de sync** — adicionar step ao final de `sync-skills.yml` que gera/atualiza `config/sync-status.md` com: repo, skills instaladas, data do último sync
 - [ ] **Ingestão de playlists do YouTube** — modificar `scripts/ingest.py` para aceitar URLs de playlist e iterar sobre os vídeos
 
 ---

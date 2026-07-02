@@ -7,7 +7,7 @@
     "bullets": [
       "Funcionalidades escondidas e atalhos que fazem diferença no dia a dia."
     ],
-    "importancia": "",
+    "importancia": "Funcionalidades escondidas e atalhos que fazem diferença no dia a dia.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -20,7 +20,7 @@
     "bullets": [
       "Como personalizar a aparência do VS Code — cores, ícones e fontes."
     ],
-    "importancia": "",
+    "importancia": "Como personalizar a aparência do VS Code — cores, ícones e fontes.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -33,7 +33,7 @@
     "bullets": [
       "Como usar e personalizar o terminal embutido no VS Code — sem precisar alternar janelas."
     ],
-    "importancia": "",
+    "importancia": "Como usar e personalizar o terminal embutido no VS Code — sem precisar alternar janelas.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -46,7 +46,7 @@
     "bullets": [
       "Como abrir, entender e personalizar as configurações do VS Code."
     ],
-    "importancia": "",
+    "importancia": "Como abrir, entender e personalizar as configurações do VS Code.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -59,7 +59,7 @@
     "bullets": [
       "Guia completo para configurar e usar Python no VS Code, incluindo execução de scripts e debugging."
     ],
-    "importancia": "",
+    "importancia": "Guia completo para configurar e usar Python no VS Code, incluindo execução de scripts e debugging.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -72,7 +72,7 @@
     "bullets": [
       "Como gerenciar ambientes virtuais Python no VS Code — criação, seleção e gerenciamento de pacotes."
     ],
-    "importancia": "",
+    "importancia": "Como gerenciar ambientes virtuais Python no VS Code — criação, seleção e gerenciamento de pacotes.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -85,7 +85,7 @@
     "bullets": [
       "Profiles permitem criar conjuntos de configurações e alternar entre eles rapidamente — ou compartilhá-los com outras pessoas."
     ],
-    "importancia": "",
+    "importancia": "Profiles permitem criar conjuntos de configurações e alternar entre eles rapidamente — ou compartilhá-los com outras pessoas.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -98,7 +98,7 @@
     "bullets": [
       "Guia completo de atalhos e como personalizar o teclado no VS Code."
     ],
-    "importancia": "",
+    "importancia": "Guia completo de atalhos e como personalizar o teclado no VS Code.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -111,7 +111,7 @@
     "bullets": [
       "Guia completo para criar, editar e executar notebooks Jupyter diretamente no VS Code — sem precisar do browser tradicional."
     ],
-    "importancia": "",
+    "importancia": "Guia completo para criar, editar e executar notebooks Jupyter diretamente no VS Code — sem precisar do browser tradicional.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -124,7 +124,7 @@
     "bullets": [
       "Guia completo dos componentes da interface do VS Code e como navegar com eficiência."
     ],
-    "importancia": "",
+    "importancia": "Guia completo dos componentes da interface do VS Code e como navegar com eficiência.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -137,7 +137,7 @@
     "bullets": [
       "Como usar Git diretamente no VS Code sem precisar do terminal para operações comuns."
     ],
-    "importancia": "",
+    "importancia": "Como usar Git diretamente no VS Code sem precisar do terminal para operações comuns.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -150,7 +150,7 @@
     "bullets": [
       "Como encontrar, instalar, configurar e recomendar extensões no VS Code."
     ],
-    "importancia": "",
+    "importancia": "Como encontrar, instalar, configurar e recomendar extensões no VS Code.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -163,7 +163,7 @@
     "bullets": [
       "Tutorial completo da Anthropic cobrindo análise de dados reais, visualização e modelo de machine learning dentro do VS Code com Jupyter Notebooks."
     ],
-    "importancia": "",
+    "importancia": "Tutorial completo da Anthropic cobrindo análise de dados reais, visualização e modelo de machine learning dentro do VS Code com Jupyter Notebooks.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -176,7 +176,7 @@
     "bullets": [
       "Recursos de inteligência artificial disponíveis no VS Code para aumentar produtividade."
     ],
-    "importancia": "",
+    "importancia": "Recursos de inteligência artificial disponíveis no VS Code para aumentar produtividade.",
     "fonte": "vscode-docs",
     "github_repo": "",
     "github_stars": ""
@@ -191,7 +191,7 @@
       "Reduz tokens mantendo o contexto relevante — ideal para pedidos de refatoração, revisão de arquitetura e onboarding",
       "Uso imediato sem instalação: `npx repomix` na raiz do projeto gera `repomix-output.txt`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": "20900"
@@ -206,7 +206,7 @@
       "Tudo fica dentro da sua infraestrutura — indicado para empresas com dados sensíveis",
       "Instalação via Docker: `git clone` + `docker compose up` na pasta `onyx/deployment/docker_compose`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": "17300"
@@ -221,7 +221,7 @@
       "Permite que o Claude navegue e manipule seu sistema de conhecimento pessoal como um assistente que conhece suas notas",
       "Instalação: `git clone` + copiar skills para `.claude/skills/`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": ""
@@ -236,7 +236,7 @@
       "Ideal para absorver grandes volumes de informação rapidamente sem ler cada fonte manualmente",
       "Instalação: `git clone https://github.com/PleasePrompto/notebooklm-skill.git` + copiar a skill para `.claude/skills/`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": ""
@@ -251,7 +251,7 @@
       "Cada skill é calibrada para uma tarefa específica, entregando resultados no formato certo sem reescrever prompts",
       "Instalação: `git clone` + copiar os arquivos SKILL.md para `.claude/skills/`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": ""
@@ -266,7 +266,7 @@
       "Conecta modelos de linguagem (Claude, GPT) com bases de conhecimento e APIs de forma visual",
       "Instalação: `npm install -g flowise` + `npx flowise start`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": "30000"
@@ -281,7 +281,7 @@
       "Cobre áreas como segurança, testes automatizados, documentação, code review e muito mais",
       "Instalação: clonar o repo e copiar os arquivos de regras para a linguagem que você usa"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": "128000"
@@ -296,7 +296,7 @@
       "Conecta com fontes de dados (PDFs, bancos, APIs) e publica como aplicação pronta",
       "Instalação via Docker: `git clone` + `docker compose up` na pasta `dify/docker`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": "130000"
@@ -311,7 +311,7 @@
       "É a forma \"correta\" e testada pela Anthropic de instruir o Claude a lidar com esses formatos",
       "Instalação: `git clone https://github.com/anthropics/skills.git` + copiar as skills desejadas para `.claude/skills/`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": ""
@@ -324,7 +324,7 @@
     "bullets": [
       "O flag claude -p (ou --print) executa o Claude Code em modo não-interativo: recebe um prompt, processa e retorna a resposta sem abrir a interface de chat. É o modo usado em:"
     ],
-    "importancia": "",
+    "importancia": "O flag claude -p (ou --print) executa o Claude Code em modo não-interativo: recebe um prompt, processa e retorna a resposta sem abrir a interface de chat. É o modo usado em:",
     "fonte": "pesquisa-web",
     "github_repo": "",
     "github_stars": ""
@@ -339,7 +339,7 @@
       "Em vez de escrever prompts longos toda vez, uma skill encapsula o conhecimento especializado",
       "Instalação: `git clone` + copiar os arquivos SKILL.md desejados para `.claude/skills/`"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "editorial",
     "github_repo": "",
     "github_stars": "22000"
@@ -352,7 +352,7 @@
     "bullets": [
       "Skills são pastas com instruções, scripts e recursos que o Claude carrega dinamicamente para melhorar o desempenho em tarefas específicas. Funcionam por \"progressive disclosure\" — o Claude identifica "
     ],
-    "importancia": "",
+    "importancia": "Skills são pastas com instruções, scripts e recursos que o Claude carrega dinamicamente para melhorar o desempenho em tarefas específicas. Funcionam por \"progressive disclosure\" — o Claude identifica ",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -365,7 +365,7 @@
     "bullets": [
       "Tool use permite que o Claude chame funções que você define ou que a Anthropic fornece. O Claude decide quando chamar uma ferramenta com base no pedido do usuário e na descrição da ferramenta."
     ],
-    "importancia": "",
+    "importancia": "Tool use permite que o Claude chame funções que você define ou que a Anthropic fornece. O Claude decide quando chamar uma ferramenta com base no pedido do usuário e na descrição da ferramenta.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -378,7 +378,7 @@
     "bullets": [
       "Curso avançado sobre recursos sofisticados e padrões de implementação para desenvolvimento de MCP em produção."
     ],
-    "importancia": "",
+    "importancia": "Curso avançado sobre recursos sofisticados e padrões de implementação para desenvolvimento de MCP em produção.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -391,7 +391,7 @@
     "bullets": [
       "Curso gratuito sobre como usar e criar sub-agentes no Claude Code para gerenciar contexto, delegar tarefas e construir workflows especializados."
     ],
-    "importancia": "",
+    "importancia": "Curso gratuito sobre como usar e criar sub-agentes no Claude Code para gerenciar contexto, delegar tarefas e construir workflows especializados.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -404,7 +404,7 @@
     "bullets": [
       "Curso prático sobre construção de servidores e clientes MCP usando Python SDK, focando nos três primitivos principais: ferramentas, recursos e prompts."
     ],
-    "importancia": "",
+    "importancia": "Curso prático sobre construção de servidores e clientes MCP usando Python SDK, focando nos três primitivos principais: ferramentas, recursos e prompts.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -417,7 +417,7 @@
     "bullets": [
       "Curso gratuito da Anthropic no Skilljar sobre como construir, configurar e compartilhar Skills no Claude Code."
     ],
-    "importancia": "",
+    "importancia": "Curso gratuito da Anthropic no Skilljar sobre como construir, configurar e compartilhar Skills no Claude Code.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -430,7 +430,7 @@
     "bullets": [
       "Treinamento abrangente sobre integrar o Claude Code no fluxo de trabalho de desenvolvimento de software."
     ],
-    "importancia": "",
+    "importancia": "Treinamento abrangente sobre integrar o Claude Code no fluxo de trabalho de desenvolvimento de software.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -443,7 +443,7 @@
     "bullets": [
       "Servidores MCP remotos permitem que desenvolvedores se conectem via Anthropic MCP connector API a serviços externos sem precisar rodar servidores localmente."
     ],
-    "importancia": "",
+    "importancia": "Servidores MCP remotos permitem que desenvolvedores se conectem via Anthropic MCP connector API a serviços externos sem precisar rodar servidores localmente.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -456,7 +456,7 @@
     "bullets": [
       "Guia oficial da Anthropic para engenharia de prompts com Claude."
     ],
-    "importancia": "",
+    "importancia": "Guia oficial da Anthropic para engenharia de prompts com Claude.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -469,7 +469,7 @@
     "bullets": [
       "Prioridades estratégicas do MCP para o ecossistema (atualizado março/2026)."
     ],
-    "importancia": "",
+    "importancia": "Prioridades estratégicas do MCP para o ecossistema (atualizado março/2026).",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -482,7 +482,7 @@
     "bullets": [
       "MCP é um padrão aberto para conectar aplicações de IA a sistemas externos. É como um \"USB-C para IA\" — fornece uma forma padronizada de conectar aplicações de IA a fontes de dados, ferramentas e workf"
     ],
-    "importancia": "",
+    "importancia": "MCP é um padrão aberto para conectar aplicações de IA a sistemas externos. É como um \"USB-C para IA\" — fornece uma forma padronizada de conectar aplicações de IA a fontes de dados, ferramentas e workf",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -495,7 +495,7 @@
     "bullets": [
       "A extensão do VS Code é a forma recomendada de usar Claude Code no editor. Oferece painel gráfico nativo, diff side-by-side, @-mentions com número de linha, histórico de conversas e múltiplas abas."
     ],
-    "importancia": "",
+    "importancia": "A extensão do VS Code é a forma recomendada de usar Claude Code no editor. Oferece painel gráfico nativo, diff side-by-side, @-mentions com número de linha, histórico de conversas e múltiplas abas.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -508,7 +508,7 @@
     "bullets": [
       "Custom skills permitem adicionar conhecimento especializado e workflows específicos da organização ao Claude. Disponíveis nos planos Free, Pro, Max, Team e Enterprise (requer execução de código ativad"
     ],
-    "importancia": "",
+    "importancia": "Custom skills permitem adicionar conhecimento especializado e workflows específicos da organização ao Claude. Disponíveis nos planos Free, Pro, Max, Team e Enterprise (requer execução de código ativad",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -521,7 +521,7 @@
     "bullets": [
       "Visão geral rápida:"
     ],
-    "importancia": "",
+    "importancia": "Visão geral rápida:",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -534,7 +534,7 @@
     "bullets": [
       "Skills estendem o que o Claude consegue fazer. Crie um arquivo SKILL.md com instruções, e o Claude adiciona ao seu toolkit. O Claude usa skills quando relevante, ou você pode invocar diretamente com /"
     ],
-    "importancia": "",
+    "importancia": "Skills estendem o que o Claude consegue fazer. Crie um arquivo SKILL.md com instruções, e o Claude adiciona ao seu toolkit. O Claude usa skills quando relevante, ou você pode invocar diretamente com /",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -547,7 +547,7 @@
     "bullets": [
       "Receitas para tarefas cotidianas de desenvolvimento: explorar codebases, corrigir bugs, refatorar, testar, criar PRs e mais."
     ],
-    "importancia": "",
+    "importancia": "Receitas para tarefas cotidianas de desenvolvimento: explorar codebases, corrigir bugs, refatorar, testar, criar PRs e mais.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -560,7 +560,7 @@
     "bullets": [
       "Guia oficial da Anthropic para Claude Fable 5, Opus 4.8, Opus 4.6, Sonnet 4.6 e Haiku 4.5."
     ],
-    "importancia": "",
+    "importancia": "Guia oficial da Anthropic para Claude Fable 5, Opus 4.8, Opus 4.6, Sonnet 4.6 e Haiku 4.5.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -573,7 +573,7 @@
     "bullets": [
       "Agent Skills são capacidades modulares que estendem a funcionalidade do Claude. Cada Skill empacota instruções, metadados e recursos opcionais (scripts, templates) que o Claude usa automaticamente qua"
     ],
-    "importancia": "",
+    "importancia": "Agent Skills são capacidades modulares que estendem a funcionalidade do Claude. Cada Skill empacota instruções, metadados e recursos opcionais (scripts, templates) que o Claude usa automaticamente qua",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -586,7 +586,7 @@
     "bullets": [
       "O contexto é um bem compartilhado. Sua Skill divide a janela de contexto com o system prompt, histórico da conversa, metadata de outras Skills e a requisição atual."
     ],
-    "importancia": "",
+    "importancia": "O contexto é um bem compartilhado. Sua Skill divide a janela de contexto com o system prompt, histórico da conversa, metadata de outras Skills e a requisição atual.",
     "fonte": "anthropic-docs",
     "github_repo": "",
     "github_stars": ""
@@ -599,7 +599,7 @@
     "bullets": [
       "Tema: agentes"
     ],
-    "importancia": "",
+    "importancia": "Tema: agentes",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -612,7 +612,7 @@
     "bullets": [
       "Tema: agentes"
     ],
-    "importancia": "",
+    "importancia": "Tema: agentes",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -625,7 +625,7 @@
     "bullets": [
       "Tema: skills"
     ],
-    "importancia": "",
+    "importancia": "Tema: skills",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -638,7 +638,7 @@
     "bullets": [
       "Tema: agentes"
     ],
-    "importancia": "",
+    "importancia": "Tema: agentes",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -651,7 +651,7 @@
     "bullets": [
       "Tema: skills"
     ],
-    "importancia": "",
+    "importancia": "Tema: skills",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -664,7 +664,7 @@
     "bullets": [
       "Tema: skills"
     ],
-    "importancia": "",
+    "importancia": "Tema: skills",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -677,7 +677,7 @@
     "bullets": [
       "Tema: skills"
     ],
-    "importancia": "",
+    "importancia": "Tema: skills",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -690,7 +690,7 @@
     "bullets": [
       "Tema: mcp"
     ],
-    "importancia": "",
+    "importancia": "Tema: mcp",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -703,7 +703,7 @@
     "bullets": [
       "Tema: skills"
     ],
-    "importancia": "",
+    "importancia": "Tema: skills",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -716,7 +716,7 @@
     "bullets": [
       "Tema: mcp"
     ],
-    "importancia": "",
+    "importancia": "Tema: mcp",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""
@@ -729,7 +729,7 @@
     "bullets": [
       "Tema: ferramentas"
     ],
-    "importancia": "",
+    "importancia": "Tema: ferramentas",
     "fonte": "ai-engineer-summit",
     "github_repo": "",
     "github_stars": ""

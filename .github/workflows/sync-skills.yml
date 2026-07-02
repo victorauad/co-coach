@@ -139,3 +139,60 @@ jobs:
 
             echo "  → Skills sincronizadas em $repo/.claude/skills/"
           done
+
+      - name: Gerar dashboard de sync (config/sync-status.md)
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          set -e
+
+          REPOS=$(yq e '.repos[]' config/sync-targets.yml)
+          DATA=$(date -u '+%Y-%m-%d %H:%M UTC')
+          SKILLS=$(ls skills/ | tr '\n' ' ')
+          SKILL_COUNT=$(ls skills/ | wc -l | tr -d ' ')
+
+          {
+            echo "# Sync Status"
+            echo ""
+            echo "> Atualizado em: $DATA"
+            echo ""
+            echo "| Repo | Skills instaladas | Último sync |"
+            echo "|------|-------------------|-------------|"
+            for repo in $REPOS; do
+              echo "| \`$repo\` | $SKILL_COUNT skills | $DATA |"
+            done
+            echo ""
+            echo "## Skills sincronizadas ($SKILL_COUNT)"
+            echo ""
+            for skill in $SKILLS; do
+              echo "- \`$skill\`"
+            done
+          } > /tmp/sync-status.md
+
+          encoded=$(base64 -w 0 /tmp/sync-status.md)
+
+          # Busca SHA atual do arquivo (se existir) para fazer update
+          sha_param=""
+          response=$(curl -s -w "%{http_code}" -o /tmp/status_check.json \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/victorauad/co-coach/contents/config/sync-status.md")
+
+          if [ "$response" = "200" ]; then
+            sha=$(python3 -c "import sys, json; print(json.load(open('/tmp/status_check.json')).get('sha',''))")
+            sha_param=", \"sha\": \"$sha\""
+          fi
+
+          http_status=$(curl -s -o /tmp/status_response.json -w "%{http_code}" \
+            -X PUT \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/victorauad/co-coach/contents/config/sync-status.md" \
+            -d "{\"message\": \"chore: atualizar sync-status.md [$DATA]\", \"content\": \"$encoded\"$sha_param}")
+
+          if [ "$http_status" = "200" ] || [ "$http_status" = "201" ]; then
+            echo "✅ config/sync-status.md atualizado no co-coach"
+          else
+            echo "⚠️ Falha ao salvar sync-status.md (HTTP $http_status) — não bloqueia o sync"
+            cat /tmp/status_response.json
+          fi
