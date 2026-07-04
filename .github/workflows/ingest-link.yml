@@ -72,7 +72,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add kb/ docs/ skills/README.md
+          git add kb/ skills/README.md
+          git add -f docs/
           git diff --staged --quiet && echo "Nada para commitar" && exit 0
           git commit -m "feat: ingest link from issue #${{ github.event.issue.number }}"
           git pull --rebase origin main
