@@ -24,7 +24,7 @@ skills/*.md     →  sync-skills.yml     →  .claude/skills/ nos repos
 **Campos obrigatórios por arquivo:**
 ```yaml
 titulo: string (máx 80 chars)
-tema: setup | metodologia | agentes | mcp | ferramentas | workflow | prompts | outros
+tema: setup | metodologia | agentes | mcp | ferramentas | workflow | prompts | service-as-software | outros
 url: string
 data: YYYY-MM-DD
 importancia: 1-5
@@ -45,7 +45,7 @@ importancia: 1-5
 **Tecnologia:** HTML estático gerado por `scripts/build-site.py`
 
 **Artefatos gerados:**
-- `docs/index.html` — feed com filtro por tema (Tailwind CSS, vanilla JS)
+- `docs/index.html` — feed com filtro por tema (CSS próprio via `static/tokens.css`, vanilla JS — sem dependência de CDN externo desde a redesign de 2026-07-04)
 - `docs/knowledge-base.json` — dump completo da KB em JSON (consumido pelo gerenciador e pelas skills de review)
 
 **Publicação:** GitHub Pages, branch `main`, pasta `docs/`
@@ -141,3 +141,24 @@ python3 scripts/server.py
 | GitHub Pages em vez de Vercel/servidor | Gratuito, zero manutenção, integrado ao repositório |
 | Servidor Python stdlib para gerenciador | Zero dependências externas para instalar |
 | Todas as skills sincronizadas para todos os repos | Simplicidade > controle granular neste momento |
+
+---
+
+## Regra de arquitetura — "aprender fazendo" (desde 2026-07-04)
+
+O co-coach tem um objetivo explícito de ensinar Victor a usar Claude Code na prática (ver `requirements.md`). Isso impõe uma restrição a toda automação nova:
+
+- **Hooks e configs locais (`.claude/settings.json`) são desencorajados** para lógica que Victor precisa confiar no dia a dia — eles vivem só na máquina onde foram configurados e exigem entender o conceito de "hook" para confiar que funcionam.
+- **Preferir GitHub Actions** (roda no servidor, sem configuração local, já é o padrão usado por `ingest-link.yml`, `ingest-github-stars.yml` e `reindex-weekly.yml`).
+- **Todo resultado de automação nova deve ganhar uma superfície visual** (card no feed, seção no `gerenciador.html`, diagrama no `aprenda.html`) — nunca ficar só em texto de terminal ou arquivo de config para Victor interpretar.
+- Essa regra nasceu de uma discussão concreta: a ideia de rodar "gap analysis da KB" via hook de `SessionStart` foi descartada por violar essa regra; a alternativa (Action semanal + superfície visual) foi adotada no lugar.
+
+---
+
+## Direcionamento de aprendizado — tese Service-as-a-Software (desde 2026-07-04)
+
+Victor assume o papel de Head de Growth e Produto na SMPL e precisa aplicar a tese Service-as-a-Software da Sequoia no trabalho. Isso muda como a KB e as skills de aprendizado (`co-coach-quiz`, `co-coach-digest`, `co-coach-review`) devem priorizar conteúdo:
+
+- **Novo tema na KB:** `service-as-software` — conteúdo específico sobre a tese (agentes substituindo trabalho de serviço, pricing por outcome, produtos AI-first).
+- **Curadoria com viés:** ao sugerir o que estudar (digest, quiz semanal), dar peso maior a conteúdo desse tema e a temas de suporte direto (`agentes`, `metodologia` aplicada a produto).
+- **Critério de relevância:** ao decidir a `importancia` (1–5) de um link novo relacionado a agentes/produto AI-first, considerar a conexão com a tese como fator de nota mais alta.

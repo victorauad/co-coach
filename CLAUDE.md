@@ -21,10 +21,12 @@ Quando receber uma tarefa, consulte esses três arquivos antes de propor qualque
 ## Arquitetura em 3 camadas
 
 1. **Knowledge base viva** — conteúdo indexado automaticamente em `kb/` via: (a) link enviado por GitHub Issue (iOS Shortcut), (b) repos do GitHub estrelados (workflow semanal). Cada arquivo `.md` tem frontmatter YAML com titulo, tema, bullets, url, importancia.
-
 2. **Feed mobile** — site estático em GitHub Pages (`https://victorauad.github.io/co-coach`) gerado por `scripts/build-site.py`. Cards com filtro por tema e campo de contexto "o que estou fazendo agora".
-
 3. **Skills instaláveis** — arquivos `SKILL.md` em `skills/*/`, copiados para `.claude/skills/` de outros repos via GitHub Action `sync-skills.yml`. Para ver skills disponíveis: `ls skills/`.
+
+## Direcionamento de aprendizado
+
+O caminho de aprendizado do Victor (Head de Growth e Produto na SMPL) é direcionado à tese Service-as-a-Software da Sequoia — priorize esse ângulo ao sugerir conteúdo, responder dúvidas conceituais ou avaliar relevância de links novos. Tema dedicado na KB: `service-as-software`.
 
 ## Como usar a knowledge base
 
@@ -34,5 +36,5 @@ Arquivos em `kb/` têm frontmatter `tema:`. Busque contexto antes de responder t
 grep -r "tema: <assunto>" kb/
 ```
 
-Temas: `agentes`, `ferramentas`, `mcp`, `metodologia`, `prompts`, `setup`, `workflow`.
+Temas: `agentes`, `ferramentas`, `mcp`, `metodologia`, `prompts`, `service-as-software`, `setup`, `workflow`.
 Skills `co-coach-review` e `co-coach-setup` consultam `https://victorauad.github.io/co-coach/knowledge-base.json` via WebFetch.
