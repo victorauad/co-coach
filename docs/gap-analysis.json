@@ -1,0 +1,36 @@
+{
+  "gerado_em": "2026-07-04",
+  "total_kb": 98,
+  "contagem_por_tema": {
+    "setup": 6,
+    "metodologia": 12,
+    "agentes": 12,
+    "mcp": 8,
+    "ferramentas": 39,
+    "workflow": 3,
+    "prompts": 6,
+    "service-as-software": 0,
+    "outros": 1,
+    "skills": 11
+  },
+  "lacunas": [
+    {
+      "tema": "service-as-software",
+      "total_arquivos": 0,
+      "dias_sem_atualizar": null,
+      "prioridade": "alta",
+      "motivos": [
+        "tema prioritário do direcionamento atual de aprendizado (tese Service-as-a-Software) e ainda não tem nenhum conteúdo indexado"
+      ]
+    },
+    {
+      "tema": "outros",
+      "total_arquivos": 1,
+      "dias_sem_atualizar": 14,
+      "prioridade": "normal",
+      "motivos": [
+        "apenas 1 arquivo(s) indexado(s)"
+      ]
+    }
+  ]
+}
