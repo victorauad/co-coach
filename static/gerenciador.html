@@ -243,6 +243,7 @@
           <li><button onclick="showSection('kanban'); loadKanban()" class="nav-link" id="nav-kanban"><span>🗂️</span> Kanban</button></li>
           <li><button onclick="showSection('progresso'); loadProgresso()" class="nav-link" id="nav-progresso"><span>📈</span> Progresso</button></li>
           <li><button onclick="showSection('decisoes'); loadDecisoes()" class="nav-link" id="nav-decisoes"><span>🧠</span> Decisões</button></li>
+          <li><button onclick="showSection('lacunas'); loadLacunas()" class="nav-link" id="nav-lacunas"><span>🔍</span> Lacunas</button></li>
         </ul>
       </div>
     </nav>
@@ -485,6 +486,21 @@
         </div>
       </div>
 
+      <!-- ===== LACUNAS ===== -->
+      <div id="section-lacunas" class="section">
+        <div class="mb-6 flex-between">
+          <div>
+            <h2 class="text-xl font-bold" style="margin:0">Lacunas de Conhecimento</h2>
+            <p class="text-sm text-muted mt-1">Temas com pouco conteúdo indexado ou parados há tempo, gerado automaticamente toda semana.</p>
+          </div>
+          <button onclick="loadLacunas()" class="btn btn-secondary btn-sm">↺ Recarregar</button>
+        </div>
+        <div id="lacunas-list" class="stack">
+          <div class="skeleton" style="height:5rem"></div>
+        </div>
+        <p class="text-xs text-muted mt-4" id="lacunas-updated"></p>
+      </div>
+
       <!-- ===== PROGRESSO ===== -->
       <div id="section-progresso" class="section">
         <div class="mb-6 flex-between">
@@ -527,6 +543,7 @@
   <script>
     const REPO   = 'victorauad/co-coach';
     const KB_URL = 'https://victorauad.github.io/co-coach/knowledge-base.json';
+    const LACUNAS_URL = 'https://victorauad.github.io/co-coach/gap-analysis.json';
 
     let kbData = [];
     let currentSkill = null;
@@ -968,11 +985,54 @@
         </div>`).join('');
     }
 
+    // ── Lacunas ───────────────────────────────────────
+    async function loadLacunas() {
+      const el = document.getElementById('lacunas-list');
+      el.innerHTML = '<p class="text-sm text-muted">Carregando análise de lacunas...</p>';
+      try {
+        const resp = await fetch(LACUNAS_URL + '?t=' + Date.now());
+        if (!resp.ok) throw new Error('arquivo ainda não gerado (roda toda segunda pelo CI)');
+        const data = await resp.json();
+        renderLacunas(data);
+      } catch(e) {
+        el.innerHTML = '<div class="empty-state"><p class="text-xl mb-2">🔍</p><p class="text-sm">Análise de lacunas ainda não disponível.</p><p class="text-xs mt-1">' + e.message + '</p></div>';
+      }
+    }
+
+    function renderLacunas(data) {
+      const el = document.getElementById('lacunas-list');
+      document.getElementById('lacunas-updated').textContent = data.gerado_em ? 'Gerado em ' + data.gerado_em + ' · ' + data.total_kb + ' arquivos na KB' : '';
+
+      if (!data.lacunas || data.lacunas.length === 0) {
+        el.innerHTML = '<div class="empty-state"><p class="text-xl mb-2">✅</p><p class="text-sm">Nenhuma lacuna encontrada — todos os temas têm conteúdo saudável.</p></div>';
+        return;
+      }
+
+      el.innerHTML = data.lacunas.map(l => {
+        const label = TEMA_LABELS[l.tema] || l.tema;
+        const alta = l.prioridade === 'alta';
+        return `
+        <div class="decision-card" style="${alta ? 'border-color:var(--accent)' : ''}">
+          <div class="flex-between gap-4" style="align-items:flex-start">
+            <div style="flex:1; min-width:0">
+              <div class="flex gap-2 flex-wrap mb-1">
+                <span class="decision-tag" style="${alta ? 'background:var(--accent); color:var(--bg)' : ''}">${label}</span>
+                ${alta ? '<span class="decision-tag" style="background:none">prioridade alta</span>' : ''}
+              </div>
+              <p class="text-sm font-semibold" style="margin:0 0 var(--space-1)">${l.total_arquivos} arquivo(s) indexado(s)</p>
+              <p class="text-xs text-muted" style="margin:0">${l.motivos.join(' · ')}</p>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
     // ── Progresso ─────────────────────────────────────
     const TEMA_LABELS = {
       agentes: 'Agentes', ferramentas: 'Ferramentas', mcp: 'MCP',
       metodologia: 'Metodologia', workflow: 'Workflow', prompts: 'Prompts',
-      setup: 'Setup', outros: 'Outros'
+      setup: 'Setup', outros: 'Outros', 'service-as-software': 'Service-as-Software',
+      skills: 'Skills'
     };
 
     async function loadProgresso() {
