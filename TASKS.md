@@ -17,6 +17,8 @@
 
 - [x] **Dashboard de sync** — adicionar step ao final de `sync-skills.yml` que gera/atualiza `config/sync-status.md` com: repo, skills instaladas, data do último sync
 - [ ] **Ingestão de playlists do YouTube** — modificar `scripts/ingest.py` para aceitar URLs de playlist e iterar sobre os vídeos
+- [ ] **Gap analysis simples na KB** — inspirado em `garrytan/gbrain` (visto via ingestão de stars em 2026-07-04): relatório periódico que identifica temas com poucas fontes ou pouco aprofundados em `kb/`, para guiar o que buscar/estrelar em seguida
+- [ ] **Medir resultado das decisões no diário** — inspirado em `kayba-ai/agentic-context-engine` (ACE, visto em 2026-07-04): evoluir `kb/decisoes/` para registrar não só a decisão, mas o resultado medido dela (economizou tempo? gerou retrabalho?), fechando o loop de aprendizado
 
 ---
 
