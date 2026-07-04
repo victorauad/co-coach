@@ -735,6 +735,51 @@
     "github_stars": ""
   },
   {
+    "titulo": "Mermaid: Diagramas a partir de texto inspirado em Markdown",
+    "tema": "ferramentas",
+    "url": "https://github.com/mermaid-js/mermaid",
+    "data": "2026-07-04",
+    "bullets": [
+      "Ferramenta JavaScript que gera diagramas complexos a partir de sintaxe simples tipo Markdown",
+      "Integra-se nativamente com GitHub, documentação e aplicações de produção para manter docs atualizadas",
+      "Reduz o tempo de desenvolvimento de diagramas e permite que não-programadores criem visualizações detalhadas"
+    ],
+    "importancia": "Para Heads de Growth em Martech, Mermaid é essencial para documentar fluxos, pipelines de dados e arquiteturas de forma que evolua com o código, economizando tempo do time técnico. Integrado ao Claude Code, permite gerar e atualizar diagramas de processos de Growth automaticamente, acelerando prototipagem e comunicação de estratégias complexas.",
+    "fonte": "github-stars",
+    "github_repo": "mermaid-js/mermaid",
+    "github_stars": "89027"
+  },
+  {
+    "titulo": "ACE: Motor de Contexto Agnóstico para Agentes IA",
+    "tema": "agentes",
+    "url": "https://github.com/kayba-ai/agentic-context-engine",
+    "data": "2026-07-04",
+    "bullets": [
+      "Framework open-source que adiciona loop de aprendizado persistente a agentes IA, eliminando repetição de erros",
+      "Suporta 100+ provedores de LLM (OpenAI, Anthropic, etc) com integração via LiteLLM",
+      "Resultados comprovados: 2x consistência, 49% redução de tokens, custo de aprendizado de $1.50 para projetos complexos"
+    ],
+    "importancia": "Para Heads de Growth em Martech, ACE resolve um problema crítico: agentes que custam caro mas falham repetidamente. Com redução de 49% em tokens e custo de aprendizado de $1.50, viabiliza automação de processos complexos (como traducões de código, automação web) com ROI mensurável e sem intervenção manual.",
+    "fonte": "github-stars",
+    "github_repo": "kayba-ai/agentic-context-engine",
+    "github_stars": "2516"
+  },
+  {
+    "titulo": "GBrain: Camada de Síntese e Memória para Agentes de IA",
+    "tema": "agentes",
+    "url": "https://github.com/garrytan/gbrain",
+    "data": "2026-07-04",
+    "bullets": [
+      "Sistema de memória institucional que sintetiza respostas completas com citações, não apenas lista de páginas relevantes",
+      "Grafo de conhecimento auto-configurável que extrai referências de entidades e cria conexões tipadas (trabalha_em, investiu_em, fundou) sem chamadas LLM",
+      "Daemon 24/7 que ingere, enriquece e consolida conhecimento autonomamente enquanto você dorme, com setup em 30 minutos"
+    ],
+    "importancia": "Para Heads de Growth em Martech, GBrain resolve o problema crítico de memória contextual em agentes de IA: transforma dados brutos em insights acionáveis e cria memória institucional compartilhada com controle granular de acesso, permitindo que automações rodem 24/7 sem perder contexto estratégico.",
+    "fonte": "github-stars",
+    "github_repo": "garrytan/gbrain",
+    "github_stars": "25011"
+  },
+  {
     "titulo": "Como SDD melhora a qualidade do código gerado por IA — Red Hat",
     "tema": "metodologia",
     "url": "https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality",
