@@ -750,6 +750,22 @@
     "github_stars": "89027"
   },
   {
+    "titulo": "\"LangGraph: framework para agentes com estado, human-in-the-loop e checkpointing\"",
+    "tema": "agentes-ia",
+    "url": "https://github.com/langchain-ai/langgraph",
+    "data": "2026-07-04",
+    "bullets": [
+      "Framework Python/JS para construir agentes como grafos de estado — nós (funções/LLMs) + arestas (roteamento condicional)",
+      "Diferencial principal: `interrupt()` nativo para human-in-the-loop — pausa o grafo indefinidamente até o humano responder",
+      "Checkpointing automático após cada nó: permite pausar, retomar e recuperar falhas sem perder estado",
+      "Não é uma interface visual — LangGraph Studio é ferramenta de debug/observabilidade, não de construção"
+    ],
+    "importancia": "Tema: agentes-ia",
+    "fonte": "pesquisa",
+    "github_repo": "",
+    "github_stars": ""
+  },
+  {
     "titulo": "ACE: Motor de Contexto Agnóstico para Agentes IA",
     "tema": "agentes",
     "url": "https://github.com/kayba-ai/agentic-context-engine",

@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-07-04",
-  "total_kb": 98,
+  "gerado_em": "2026-07-05",
+  "total_kb": 99,
   "contagem_por_tema": {
     "setup": 6,
     "metodologia": 12,
@@ -11,6 +11,7 @@
     "prompts": 6,
     "service-as-software": 0,
     "outros": 1,
+    "agentes-ia": 1,
     "skills": 11
   },
   "lacunas": [
@@ -26,7 +27,16 @@
     {
       "tema": "outros",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 14,
+      "dias_sem_atualizar": 15,
+      "prioridade": "normal",
+      "motivos": [
+        "apenas 1 arquivo(s) indexado(s)"
+      ]
+    },
+    {
+      "tema": "agentes-ia",
+      "total_arquivos": 1,
+      "dias_sem_atualizar": 1,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)"
