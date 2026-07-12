@@ -735,6 +735,193 @@
     "github_stars": ""
   },
   {
+    "titulo": "Cognee — Plataforma open-source de memória para agentes de IA",
+    "tema": "agentes",
+    "url": "https://github.com/topoteretes/cognee",
+    "data": "2026-07-12",
+    "bullets": [
+      "Plataforma open-source de memória de longo prazo para agentes: os agentes lembram do que aprenderam entre sessões",
+      "Constrói um grafo de conhecimento auto-hospedado a partir de documentos, conversas e dados — sem depender de serviço externo",
+      "Substitui pipelines RAG tradicionais por um motor que combina grafo + embeddings, melhorando precisão das respostas",
+      "Integra com múltiplos LLMs e bancos vetoriais; instalável via pip com comunidade ativa de plugins",
+      "Alternativa self-hosted a soluções pagas de memória — dados sensíveis ficam na sua infraestrutura"
+    ],
+    "importancia": "Memória persistente é o que separa um chatbot de um agente que evolui. Para automações de Growth que rodam continuamente (análises recorrentes, monitoramento de CRM), o Cognee permite que o agente acumule contexto do negócio sem enviar dados de cliente a terceiros — mesma tese do claude-mem que você já usa, mas em escala de plataforma.",
+    "fonte": "github-stars",
+    "github_repo": "topoteretes/cognee",
+    "github_stars": "27639"
+  },
+  {
+    "titulo": "Awesome LLM Apps — 100+ agentes e apps RAG prontos para rodar",
+    "tema": "agentes",
+    "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+    "data": "2026-07-12",
+    "bullets": [
+      "Coleção de 100+ aplicações de agentes de IA e RAG com código completo: clonar, personalizar e rodar",
+      "Cobre o espectro inteiro: agentes simples, times de agentes, agentes com memória, RAG sobre documentos, voice agents e MCP",
+      "Exemplos com múltiplos provedores (OpenAI, Anthropic, Gemini, modelos locais via Ollama) — bom para comparar abordagens",
+      "Cada app é um projeto pequeno e autocontido — serve como ponto de partida de POC em vez de começar do zero",
+      "Um dos repositórios de IA mais estrelados do GitHub (118 mil+ stars), atualizado com frequência"
+    ],
+    "importancia": "Para quem aprende fazendo, é um catálogo de POCs prontas: antes de construir um agente de análise de dados ou de pesquisa de mercado, provavelmente já existe um exemplo funcional aqui para adaptar. Reduz o ciclo \"ideia → protótipo\" de dias para horas.",
+    "fonte": "github-stars",
+    "github_repo": "Shubhamsaboo/awesome-llm-apps",
+    "github_stars": "118428"
+  },
+  {
+    "titulo": "Agent Reach — Dá ao agente acesso à internet inteira sem taxas de API",
+    "tema": "ferramentas",
+    "url": "https://github.com/Panniantong/Agent-Reach",
+    "data": "2026-07-12",
+    "bullets": [
+      "CLI que dá \"olhos\" ao agente de IA: lê e busca Twitter/X, Reddit, YouTube, GitHub, Bilibili e XiaoHongShu sem pagar APIs",
+      "Resolve os bloqueios clássicos: transcrição de vídeos do YouTube, busca no Twitter sem API paga, Reddit sem 403, conteúdo atrás de login",
+      "Escolhe, instala e testa automaticamente o melhor método de acesso para cada plataforma — quando um método quebra, a ferramenta troca por você",
+      "Um único CLI em Python 3.10+, licença MIT, zero taxas de API",
+      "Foi o repositório #1 em trending no GitHub (Trendshift)"
+    ],
+    "importancia": "Para pesquisa de mercado e social listening em Growth, o custo de APIs (Twitter, por exemplo) costuma inviabilizar automações. Agent Reach zera esse custo e permite que agentes monitorem menções, analisem concorrentes e resumam vídeos — casos de uso diretos para as skills de social e competitor do co-coach.",
+    "fonte": "github-stars",
+    "github_repo": "Panniantong/Agent-Reach",
+    "github_stars": "55292"
+  },
+  {
+    "titulo": "Hallmark — Skill de design que se recusa a parecer gerado por IA",
+    "tema": "ferramentas",
+    "url": "https://github.com/Nutlope/hallmark",
+    "data": "2026-07-12",
+    "bullets": [
+      "Skill de design para Claude Code, Cursor e Codex criada pela Together AI que combate o \"AI slop\" visual — interfaces genéricas que todo LLM produz por padrão",
+      "Escolhe uma macroestrutura para o briefing, aplica um de 20 temas e roda 57 testes anti-slop mais autocrítica antes de entregar",
+      "Quatro verbos: construir UI nova (padrão), `audit` (avalia código existente), `redesign` (reconstrói mantendo copy e marca) e `study` (extrai o \"DNA\" de um design que você admira)",
+      "Duas páginas geradas para briefings diferentes parecem sites diferentes — não variações de cor do mesmo template",
+      "O verbo `study` gera um `design.md` portátil para levar a identidade visual a outras ferramentas de IA"
+    ],
+    "importancia": "Landing pages e dashboards gerados por IA têm cara de template — o que mina credibilidade em marketing. Para POCs e páginas de campanha feitas com a skill co-coach-ui, o Hallmark eleva o padrão visual sem precisar de designer, e o `hallmark study` permite clonar a estética (não os pixels) de referências de marca.",
+    "fonte": "github-stars",
+    "github_repo": "Nutlope/hallmark",
+    "github_stars": "4163"
+  },
+  {
+    "titulo": "Vibe-Trading — Agente pessoal de trading com um comando",
+    "tema": "agentes",
+    "url": "https://github.com/HKUDS/Vibe-Trading",
+    "data": "2026-07-12",
+    "bullets": [
+      "Projeto acadêmico (HKUDS, Universidade de Hong Kong) que equipa um agente de IA com capacidades completas de trading em um comando",
+      "Stack moderna: backend FastAPI, frontend React 19, distribuído via PyPI (`vibe-trading-ai`), licença MIT",
+      "O agente analisa mercado, dados e sinais para apoiar decisões de investimento — exemplo de \"agente de domínio\" vertical",
+      "Mesmo grupo de pesquisa de projetos conhecidos de RAG e agentes (LightRAG, AutoAgent)",
+      "Cautela: agentes de trading executam decisões financeiras reais — usar em modo simulação/estudo antes de qualquer dinheiro real"
+    ],
+    "importancia": "Menos pelo trading em si, mais pelo padrão: é um exemplo completo de agente vertical (domínio específico, ferramentas próprias, interface dedicada) — a mesma anatomia que um \"agente de growth\" ou \"agente de MMM\" teria. Vale estudar a arquitetura como referência de Service-as-a-Software aplicado a um domínio.",
+    "fonte": "github-stars",
+    "github_repo": "HKUDS/Vibe-Trading",
+    "github_stars": "20418"
+  },
+  {
+    "titulo": "freeCodeCamp — Currículo open-source de programação e computação",
+    "tema": "ferramentas",
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+    "data": "2026-07-12",
+    "bullets": [
+      "Plataforma gratuita e open-source com currículo completo de programação, matemática e ciência da computação — o repositório mais estrelado do GitHub",
+      "Certificações práticas em trilhas relevantes para dados: JavaScript, Python, análise de dados com Python, machine learning e bancos de dados relacionais",
+      "Aprendizado baseado em projetos: cada certificação exige construir projetos reais, não só assistir aulas",
+      "Comunidade enorme (fórum, YouTube, publicação) com material em português",
+      "Mantido por organização sem fins lucrativos — sem paywall em nenhum conteúdo"
+    ],
+    "importancia": "Para quem usa Claude Code sem ser desenvolvedor, os fundamentos (lógica, Python, SQL) aumentam muito a qualidade do que se pede e se valida com IA. A trilha de análise de dados com Python é a mais alinhada ao trabalho com BigQuery e planilhas — útil como referência de estudo dirigido, não como pré-requisito.",
+    "fonte": "github-stars",
+    "github_repo": "freeCodeCamp/freeCodeCamp",
+    "github_stars": "451655"
+  },
+  {
+    "titulo": "Ente — Nuvem criptografada de ponta a ponta para fotos e autenticação",
+    "tema": "ferramentas",
+    "url": "https://github.com/ente/ente",
+    "data": "2026-07-12",
+    "bullets": [
+      "Alternativa open-source ao Google Photos com criptografia de ponta a ponta: nem o provedor consegue ver suas fotos",
+      "Inclui o Ente Auth, app gratuito de códigos 2FA criptografados e sincronizados entre dispositivos — alternativa ao Google Authenticator",
+      "Apps para todas as plataformas (iOS, Android, desktop, web) com busca por IA rodando localmente no dispositivo",
+      "Código auditado publicamente; pode ser auto-hospedado para controle total",
+      "Modelo de negócio por assinatura, sem anúncios nem mineração de dados"
+    ],
+    "importancia": "Entra na frente de segurança pessoal (mesmo tema do personal-security-checklist já indexado): o Ente Auth é o upgrade mais fácil — 2FA com backup criptografado elimina o risco de perder acesso a contas de trabalho (GitHub, Google, HubSpot) se o celular for perdido.",
+    "fonte": "github-stars",
+    "github_repo": "ente/ente",
+    "github_stars": "27635"
+  },
+  {
+    "titulo": "Ponytail — Skill que faz o agente escrever o mínimo de código possível",
+    "tema": "metodologia",
+    "url": "https://github.com/DietrichGebert/ponytail",
+    "data": "2026-07-12",
+    "bullets": [
+      "Skill que faz o agente de código pensar como \"o dev sênior mais preguiçoso da sala\": o melhor código é o que você nunca escreveu",
+      "Resultados medidos em sessões reais de Claude Code: ~54% menos código (até 94% quando o agente tende a superconstruir), ~20% mais barato e ~27% mais rápido",
+      "Combate o principal vício dos agentes: over-engineering — criar abstrações, arquivos e funcionalidades que ninguém pediu",
+      "Mantém todas as guardas de segurança — diferente de um prompt simples \"escreva uma linha só\", que derruba proteções",
+      "Funciona com 20+ agentes (Claude Code, Cursor, Codex etc), instalável via npm, licença MIT"
+    ],
+    "importancia": "Para quem não é desenvolvedor e usa agentes para POCs e automações, over-engineering é custo direto: mais tokens, mais tempo e mais código para manter sem entender. Ponytail reduz a conta e o risco fazendo o agente entregar só o necessário — alinhado com o princípio de contexto enxuto da Anthropic.",
+    "fonte": "github-stars",
+    "github_repo": "DietrichGebert/ponytail",
+    "github_stars": "81259"
+  },
+  {
+    "titulo": "Open-Inspect — Sistema open-source de agentes de código em background",
+    "tema": "agentes",
+    "url": "https://github.com/ColeMurray/background-agents",
+    "data": "2026-07-12",
+    "bullets": [
+      "Sistema open-source de agentes que trabalham em background enquanto você faz outra coisa, inspirado no Inspect da Ramp",
+      "Acionável de qualquer lugar: web, Slack, PRs do GitHub, issues do Linear ou webhooks — o agente abre PRs com atribuição correta ao autor do pedido",
+      "Roda em agenda (cron), reage a alertas (Sentry) e cria subtarefas paralelas em sandboxes separados",
+      "Sessões \"multiplayer\": várias pessoas colaboram com o mesmo agente em tempo real",
+      "Atenção ao modelo de segurança: single-tenant apenas — todos os usuários compartilham as credenciais do GitHub App, então só serve para times onde todos são confiáveis"
+    ],
+    "importancia": "É o padrão \"delegue e siga em frente\" aplicado a automações: em vez de supervisionar o agente na tela, você despacha tarefas via Slack ou agenda e recebe o resultado como PR. Conecta com as palestras da KB sobre não ficar de babá de agente — o gargalo é sua atenção, não a capacidade do agente.",
+    "fonte": "github-stars",
+    "github_repo": "ColeMurray/background-agents",
+    "github_stars": "2223"
+  },
+  {
+    "titulo": "Carbon — Design system open-source da IBM",
+    "tema": "ferramentas",
+    "url": "https://github.com/carbon-design-system/carbon",
+    "data": "2026-07-12",
+    "bullets": [
+      "Design system completo da IBM: componentes prontos, tokens de design, tipografia (IBM Plex) e diretrizes de acessibilidade",
+      "Implementações oficiais para React, Web Components, Angular, Vue e Svelte — estética corporativa sóbria, ideal para produtos de dados",
+      "Documentação exemplar de padrões de UI para dashboards, formulários e tabelas de dados densas",
+      "Acessibilidade (WCAG) embutida nos componentes por padrão, não como esforço extra",
+      "Alternativa ao Material UI quando o visual \"Google\" não combina com a marca"
+    ],
+    "importancia": "Referência dupla: (1) para POCs e dashboards com cara profissional sem designer — os padrões de data table e visualização do Carbon são dos melhores documentados; (2) como modelo de como documentar um design system, útil quando um agente de IA precisa gerar UI consistente a partir de regras escritas.",
+    "fonte": "github-stars",
+    "github_repo": "carbon-design-system/carbon",
+    "github_stars": "9273"
+  },
+  {
+    "titulo": "Apache Superset — Plataforma open-source de visualização de dados",
+    "tema": "ferramentas",
+    "url": "https://github.com/apache/superset",
+    "data": "2026-07-12",
+    "bullets": [
+      "Plataforma open-source de BI e exploração de dados da Apache Foundation — alternativa gratuita a Looker/Tableau/Power BI",
+      "Conecta nativamente ao BigQuery (e a dezenas de outros bancos SQL) — dashboards direto sobre as tabelas, sem exportar dados",
+      "Editor SQL embutido (SQL Lab) para explorar dados antes de montar o dashboard",
+      "Dezenas de tipos de gráfico prontos, filtros interativos e dashboards compartilháveis por link",
+      "Self-hosted: os dados não saem da sua infraestrutura — relevante quando há dados sensíveis de cliente/CRM"
+    ],
+    "importancia": "Para análises recorrentes de Growth que hoje viram planilhas, o Superset transforma queries do BigQuery em dashboards vivos que o time consulta sozinho — reduz o retrabalho de gerar o mesmo relatório toda semana. Combina com a regra de escanear o mínimo de dados: a query otimizada vira a fonte do dashboard.",
+    "fonte": "github-stars",
+    "github_repo": "apache/superset",
+    "github_stars": "73793"
+  },
+  {
     "titulo": "Mermaid: Diagramas a partir de texto inspirado em Markdown",
     "tema": "ferramentas",
     "url": "https://github.com/mermaid-js/mermaid",
