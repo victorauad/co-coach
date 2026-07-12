@@ -73,6 +73,7 @@ def main():
 
     processed = 0
     skipped = 0
+    errors = 0
 
     for repo in repos:
         owner = repo["owner"]["login"]
@@ -139,9 +140,14 @@ data: {today}
             processed += 1
         except Exception as e:
             print(f"       Erro ao processar {owner}/{name}: {e}")
+            errors += 1
             continue
 
-    print(f"\nConcluído: {processed} novos indexados, {skipped} pulados (já existentes).")
+    print(f"\nConcluído: {processed} novos indexados, {skipped} pulados (já existentes), {errors} com erro.")
+
+    if errors > 0 and processed == 0:
+        print("Falha: havia repos novos para indexar e nenhum foi processado (ex.: API sem créditos).")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
