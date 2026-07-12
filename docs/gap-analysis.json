@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-07-06",
-  "total_kb": 99,
+  "gerado_em": "2026-07-12",
+  "total_kb": 110,
   "contagem_por_tema": {
     "setup": 6,
-    "metodologia": 12,
-    "agentes": 12,
+    "metodologia": 13,
+    "agentes": 16,
     "mcp": 8,
-    "ferramentas": 39,
+    "ferramentas": 45,
     "workflow": 3,
     "prompts": 6,
     "service-as-software": 0,
@@ -27,7 +27,7 @@
     {
       "tema": "outros",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 16,
+      "dias_sem_atualizar": 22,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)"
@@ -36,7 +36,7 @@
     {
       "tema": "agentes-ia",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 2,
+      "dias_sem_atualizar": 8,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)"
