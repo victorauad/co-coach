@@ -22,10 +22,11 @@
 
 ## Fase 2 — Modo tutor (o coração do pivô)
 
-- [ ] **Reescrever `CLAUDE.md` como persona de tutor** — sempre perguntar antes de agir, uma pergunta por vez, explicar o porquê, nunca exigir YAML do aluno
-- [ ] **Criar skill `co-coach-start`** (evolução do `co-coach-wizard`): entrevista de boas-vindas → gera `perfil-do-aluno.md` → recomenda primeira lição ← **MVP: pessoa clona, roda `claude`, é recebida pelo wizard**
-- [ ] Adaptar `co-coach-quiz` e `co-coach-digest` para ler o perfil do aluno em vez de assumir o Victor
-- [ ] Definir como o tutor registra progresso (lições concluídas, quizzes) no perfil
+- [x] **Reescrever `CLAUDE.md` como persona de tutor** — sempre perguntar antes de agir, uma pergunta por vez, explicar o porquê, nunca exigir YAML do aluno
+- [x] **Criar skill `co-coach-start`**: entrevista de 6 perguntas → gera `perfil-do-aluno.md` → recomenda primeira lição por nível. O CLAUDE.md manda ler `skills/co-coach-start/SKILL.md` diretamente, então funciona num clone sem skill instalada (teste vivo fim-a-fim fica no teste de fumaça da Fase 3)
+- [x] Adaptar `co-coach-quiz` e `co-coach-digest` para ler o perfil do aluno em vez de assumir o Victor (quiz agora grava progresso no perfil, não mais em `static/proficiency.json`)
+- [x] Definir registro de progresso: seção `## Progresso` do perfil (lições concluídas + tabela de quizzes + próximo passo)
+- [x] Remover hook de `SessionStart` que copiava template para `~/.claude/CLAUDE.md` — caminho quebrou na Fase 1 e escrever na memória global de um estranho seria invasivo; o wizard cumpre o papel com consentimento
 
 ## Fase 3 — Instalabilidade
 
@@ -43,6 +44,8 @@
 ---
 
 ## Backlog herdado (pré-pivô, reavaliar depois da Fase 3)
+
+- [ ] Painel de proficiência do feed (`static/proficiency.json`) ficou órfão — o quiz agora grava no perfil local; decidir se o painel sai do feed ou passa a ler outra fonte
 
 - [ ] Ingestão de playlists do YouTube (`scripts/ingest.py`)
 - [ ] Gap analysis simples na KB (relatório de temas pouco cobertos)

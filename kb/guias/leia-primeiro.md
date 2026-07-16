@@ -38,4 +38,4 @@ Exemplo: "preciso cruzar dados de pipeline do HubSpot" → vai direto pro fluxo 
 
 ## Sobre "aprender errado"
 
-Você pediu pra eu cobrir os pontos cegos do seu raciocínio. Tem um arquivo dedicado a isso: `03-metodologias/pontos-cegos-do-meu-raciocinio.md`. Vale ler cedo — ele lista os erros mais comuns de quem está no seu estágio (consegue fazer as coisas seguindo tutorial, mas não entende o que aconteceu).
+Um alerta que vale ler cedo: o erro mais comum de quem está começando é conseguir fazer as coisas seguindo tutorial sem entender o que aconteceu. O antídoto é simples — depois de cada coisa que funcionar, pergunte ao Claude: "me explica o que acabou de acontecer e por quê". Entender o que você já fez vale mais do que fazer a próxima coisa.

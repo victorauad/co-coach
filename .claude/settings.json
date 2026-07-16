@@ -2,19 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(gh run watch *)",
-      "Bash(yt-dlp --flat-playlist *)"
-    ]
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "mkdir -p ~/.claude && [ ! -f ~/.claude/CLAUDE.md ] && cp 05-templates/memory-template.md ~/.claude/CLAUDE.md && echo '[SessionStart] Memória global criada em ~/.claude/CLAUDE.md' || echo '[SessionStart] ~/.claude/CLAUDE.md já existe — mantido sem alteração'"
-          }
-        ]
-      }
+      "Bash(yt-dlp --flat-playlist *)",
+      "Bash(grep *)",
+      "Bash(ls *)",
+      "Bash(python3 scripts/build-site.py)"
     ]
   }
 }
