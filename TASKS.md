@@ -23,7 +23,7 @@
 ## Fase 2 — Modo tutor (o coração do pivô)
 
 - [x] **Reescrever `CLAUDE.md` como persona de tutor** — sempre perguntar antes de agir, uma pergunta por vez, explicar o porquê, nunca exigir YAML do aluno
-- [x] **Criar skill `co-coach-start`**: entrevista de 6 perguntas → gera `perfil-do-aluno.md` → recomenda primeira lição por nível. O CLAUDE.md manda ler `skills/co-coach-start/SKILL.md` diretamente, então funciona num clone sem skill instalada (teste vivo fim-a-fim fica no teste de fumaça da Fase 3)
+- [x] **Criar skill `co-coach-start`**: entrevista de 6 perguntas → gera `perfil-do-aluno.md` → recomenda primeira lição por nível. O CLAUDE.md manda ler `.claude/skills/co-coach-start/SKILL.md` diretamente, então funciona num clone sem skill instalada (teste vivo fim-a-fim fica no teste de fumaça da Fase 3)
 - [x] Adaptar `co-coach-quiz` e `co-coach-digest` para ler o perfil do aluno em vez de assumir o Victor (quiz agora grava progresso no perfil, não mais em `static/proficiency.json`)
 - [x] Definir registro de progresso: seção `## Progresso` do perfil (lições concluídas + tabela de quizzes + próximo passo)
 - [x] Remover hook de `SessionStart` que copiava template para `~/.claude/CLAUDE.md` — caminho quebrou na Fase 1 e escrever na memória global de um estranho seria invasivo; o wizard cumpre o papel com consentimento

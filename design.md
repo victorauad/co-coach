@@ -32,7 +32,7 @@ feed mobile em GitHub Pages, ingestão automática de links, sync de skills para
 
 ---
 
-## Camada 2 — Wizard de onboarding (`skills/co-coach-start/`)
+## Camada 2 — Wizard de onboarding (`.claude/skills/co-coach-start/`)
 
 Evolução do antigo `co-coach-wizard`. Fluxo:
 

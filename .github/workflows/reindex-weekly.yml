@@ -6,11 +6,11 @@ on:
     - cron: "0 8 * * 1"
   # Permite rodar manualmente pela aba Actions do GitHub
   workflow_dispatch:
-  # Roda também após qualquer push em kb/, skills/ ou static/
+  # Roda também após qualquer push em kb/, .claude/skills/ ou static/
   push:
     paths:
       - "kb/**"
-      - "skills/**"
+      - ".claude/skills/**"
       - "static/**"
       - "scripts/build-site.py"
 

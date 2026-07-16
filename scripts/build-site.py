@@ -504,7 +504,7 @@ SKILL_CATEGORIES = {
 
 
 def build_skills_readme():
-    skills_dir = Path("skills")
+    skills_dir = Path(".claude/skills")
     if not skills_dir.exists():
         return
 
@@ -558,12 +558,12 @@ def build_skills_readme():
         "",
         "## Como as skills são distribuídas",
         "",
-        "O workflow `.github/workflows/sync-skills.yml` copia cada pasta de `skills/` para o `.claude/skills/` dos repos registrados em `config/sync-targets.yml`.",
+        "O workflow `.github/workflows/sync-skills.yml` copia cada pasta de `.claude/skills/` para o `.claude/skills/` dos repos registrados em `config/sync-targets.yml`.",
         "",
     ]
 
     (skills_dir / "README.md").write_text("\n".join(lines), encoding="utf-8")
-    print(f"skills/README.md gerado ({len(descriptions)} skills)")
+    print(f".claude/skills/README.md gerado ({len(descriptions)} skills)")
 
 
 def main():

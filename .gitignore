@@ -17,9 +17,10 @@ perfil-do-aluno.md
 *.key
 credentials*.json
 
-# Claude Code — configurações locais (settings.json é do projeto e deve ser versionado)
+# Claude Code — configurações locais (settings.json e skills/ são do projeto e devem ser versionados)
 .claude/*
 !.claude/settings.json
+!.claude/skills/
 
 # Arquivos gerados — gerenciados exclusivamente pelo CI (reindex-weekly.yml)
 # Nunca commitar localmente para evitar conflitos com o GitHub Actions

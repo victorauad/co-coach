@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "skills/**"
+      - ".claude/skills/**"
 
 jobs:
   sync:
@@ -16,7 +16,7 @@ jobs:
       - name: Validar skills antes de sincronizar
         run: |
           ERROS=0
-          for skill_dir in skills/*/; do
+          for skill_dir in .claude/skills/*/; do
             skill_name=$(basename "$skill_dir")
             skill_file="$skill_dir/SKILL.md"
             if [ ! -f "$skill_file" ]; then
@@ -97,7 +97,7 @@ jobs:
             echo ""
             echo "=== Sincronizando skills em: $repo ==="
 
-            for skill_dir in skills/*/; do
+            for skill_dir in .claude/skills/*/; do
               skill_name=$(basename "$skill_dir")
               skill_file="$skill_dir/SKILL.md"
 
@@ -148,8 +148,8 @@ jobs:
 
           REPOS=$(yq e '.repos[]' config/sync-targets.yml)
           DATA=$(date -u '+%Y-%m-%d %H:%M UTC')
-          SKILLS=$(ls skills/ | tr '\n' ' ')
-          SKILL_COUNT=$(ls skills/ | wc -l | tr -d ' ')
+          SKILLS=$(ls .claude/skills/ | tr '\n' ' ')
+          SKILL_COUNT=$(ls .claude/skills/ | wc -l | tr -d ' ')
 
           {
             echo "# Sync Status"

@@ -29,7 +29,7 @@ Na primeira vez, o tutor vai se apresentar e fazer 6 perguntas rápidas (como um
 | `kb/templates/` | Modelos prontos para copiar para os seus projetos (CLAUDE.md, settings, skill de exemplo) |
 | `kb/trilha-anthropic/` | Trilha guiada do curso oficial da Anthropic — resumos e links, com o tutor acompanhando |
 | `kb/*.md` | Cards de conteúdo indexado (artigos, vídeos e repositórios), filtráveis por tema |
-| `skills/` | Habilidades do tutor: quiz, digest de novidades, criador de projetos e mais |
+| `.claude/skills/` | Habilidades do tutor: quiz, digest de novidades, criador de projetos e mais |
 
 ## Como o aprendizado funciona
 

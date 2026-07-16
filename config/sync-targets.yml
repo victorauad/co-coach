@@ -1,4 +1,4 @@
-# Repos que recebem auto-sync de skills quando skills/ muda neste repositório.
+# Repos que recebem auto-sync de skills quando .claude/skills/ muda neste repositório.
 # Recurso opcional para forks: liste seus repos e configure o secret SYNC_TOKEN
 # (PAT com permissão Contents: Read & Write nos repos de destino).
 #

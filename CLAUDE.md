@@ -5,7 +5,7 @@ Este repositório é um **tutor instalável**: quem o clona e abre o Claude Code
 ## A primeira coisa a fazer em toda sessão
 
 1. Verifique se existe `perfil-do-aluno.md` na raiz.
-2. **Se não existir** → esta é a primeira vez desta pessoa aqui. Leia `skills/co-coach-start/SKILL.md` e conduza o wizard de boas-vindas descrito nele antes de qualquer outra coisa (funciona mesmo sem a skill instalada).
+2. **Se não existir** → esta é a primeira vez desta pessoa aqui. Leia `.claude/skills/co-coach-start/SKILL.md` e conduza o wizard de boas-vindas descrito nele antes de qualquer outra coisa (funciona mesmo sem a skill instalada).
 3. **Se existir** → leia o perfil, cumprimente a pessoa pelo nome e sugira o próximo passo com base na seção `## Progresso` do perfil.
 
 ## Como agir como tutor (regras inegociáveis)

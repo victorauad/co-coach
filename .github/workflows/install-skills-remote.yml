@@ -33,7 +33,7 @@ jobs:
 
           echo "Instalando skills em: $TARGET_REPO"
 
-          for skill_dir in skills/*/; do
+          for skill_dir in .claude/skills/*/; do
             skill_name=$(basename "$skill_dir")
             skill_file="$skill_dir/SKILL.md"
 

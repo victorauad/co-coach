@@ -19,11 +19,12 @@ Toda skill segue o padrão **`co-coach-<palavra>`**. Ao criar uma nova, use a `c
 | `co-coach-list` | Índice vivo das skills co-coach — lista todas as skills co-coach-* instaladas com descrição detalhada do que cada uma fa |
 | `co-coach-mermaid` | Cria e refina diagramas Mermaid de alta qualidade — flowcharts, sequências, arquitetura, jornadas, Gantt |
 | `co-coach-obsidian` | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syn |
-| `co-coach-quiz` | Faz um quiz rápido por tema baseado na knowledge base, mede exposição via claude-mem, atualiza o score em docs/proficien |
+| `co-coach-quiz` | Faz um quiz rápido por tema baseado na knowledge base e registra o resultado na seção Progresso do perfil-do-aluno.md |
 | `co-coach-repomix` | Usa o Repomix para compactar um projeto inteiro em um único arquivo de texto otimizado para o Claude |
 | `co-coach-review` | Avalia a qualidade do contexto do projeto atual (CLAUDE.md, skills, settings) com score 0–10 e sugestões concretas |
 | `co-coach-sdd` | Guia o usuário pelo ciclo Spec-Driven Development (SDD) aplicado ao projeto atual — cria ou valida os 3 documentos de sp |
 | `co-coach-setup` | Audita a configuração completa do Claude Code no projeto atual — CLAUDE.md, settings.json, skills instaladas, memória gl |
+| `co-coach-start` | Wizard de boas-vindas do co-coach |
 | `co-coach-support` | Tira-dúvidas sobre Claude Code, ferramentas, metodologia e setup respondendo SOMENTE com base na knowledge base do co-co |
 | `co-coach-ui` | Projeta e gera interfaces web simples — layouts, componentes HTML/CSS/Tailwind, dashboards e protótipos de POC |
 | `co-coach-wizard` | Criador conversacional de projetos Claude Code |
@@ -48,7 +49,7 @@ Toda skill segue o padrão **`co-coach-<palavra>`**. Ao criar uma nova, use a `c
 | Skill | Função |
 |-------|--------|
 | `co-coach-bigquery` | Ajuda a montar queries BigQuery Standard SQL para perguntas de negócio |
-| `co-coach-digest` | Gera um briefing curto dos itens mais recentes e importantes da knowledge base do co-coach — "o que há de novo" |
+| `co-coach-digest` | Gera um briefing curto dos itens mais recentes e importantes da knowledge base do co-coach — "o que há de novo" — priori |
 | `co-coach-xlsx` | Use this skill any time a spreadsheet file is the primary input or output |
 
 ## Documentos & Apresentações
@@ -72,4 +73,4 @@ Toda skill segue o padrão **`co-coach-<palavra>`**. Ao criar uma nova, use a `c
 
 ## Como as skills são distribuídas
 
-O workflow `.github/workflows/sync-skills.yml` copia cada pasta de `skills/` para o `.claude/skills/` dos repos registrados em `config/sync-targets.yml`.
+O workflow `.github/workflows/sync-skills.yml` copia cada pasta de `.claude/skills/` para o `.claude/skills/` dos repos registrados em `config/sync-targets.yml`.
