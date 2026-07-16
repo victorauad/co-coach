@@ -30,10 +30,10 @@
 
 ## Fase 3 — Instalabilidade
 
-- [ ] Reescrever `README.md` público: o que é, instalação em 3 passos, primeiro uso
-- [ ] Esvaziar `config/sync-targets.yml` (deixar exemplo comentado)
-- [ ] Documentar automações opcionais (feed, ingestão) como recurso avançado com secrets próprios
-- [ ] **Teste de fumaça:** clonar o repo numa pasta limpa e percorrer o fluxo completo de onboarding
+- [x] Reescrever `README.md` público: o que é, instalação em 3 passos, primeiro uso
+- [x] Esvaziar `config/sync-targets.yml` (exemplo comentado; `sync-skills.yml` sem repo hardcoded)
+- [x] Documentar automações opcionais (feed, ingestão, sync) na seção "Recursos avançados" do README
+- [x] **Teste de fumaça em clone limpo:** essenciais presentes, zero referências pessoais, zero caminhos antigos, build gera 138 cards, CLAUDE.md aponta para o wizard. Pendente só a validação humana: alguém real rodando `claude` pela primeira vez
 
 ## Fase 4 — Trilha do curso Anthropic (Skilljar)
 
