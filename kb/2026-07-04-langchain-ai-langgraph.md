@@ -75,7 +75,7 @@ config = {"configurable": {"thread_id": "usuario-123"}}
 graph.invoke(state, config)  # cada thread_id = contexto independente
 ```
 
-## Padrões de agente relevantes para a SMPL
+## Padrões de agente — exemplos aplicados a marketing
 
 ### Loop Viral — Agente de Clipping
 
@@ -108,7 +108,7 @@ coletar_metricas_cpar → avaliar_performance
 | n8n | ✅ total | Via webhook | Via DB externo |
 | Claude Code + MCP | Não | ✅ (humano opera) | Contexto da sessão |
 
-## Quando usar LangGraph na SMPL
+## Quando usar LangGraph (vs. Claude Code + MCP)
 
 - **T1 MVP**: Claude Code + MCP é suficiente (você é o humano-in-the-loop)
 - **T2/T3**: LangGraph entra quando os agentes precisarem de estado persistente entre sessões e orquestração entre si

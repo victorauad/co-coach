@@ -7,6 +7,13 @@ static/config.local.js
 # Briefings e materiais de cliente — nunca versionar (repo público)
 07-outros/
 Briefing*.md
+Briefing
+
+# Conteúdo pessoal do usuário — fica só na máquina local (repo público)
+memory/*
+!memory/.gitkeep
+sessoes/
+perfil-do-aluno.md
 *.key
 credentials*.json
 

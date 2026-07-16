@@ -1,68 +1,62 @@
 # requirements.md — co-coach
 
 > O quê o sistema precisa fazer. Fonte de verdade para objetivos e histórias de usuário.
-> Atualizado em: 2026-07-04 (direção de aprendizado voltada à tese Service-as-a-Software / novo papel na SMPL)
+> Atualizado em: 2026-07-16 (pivô: de sistema pessoal do Victor para produto público instalável)
 
 ---
 
 ## Objetivo do sistema
 
-O co-coach é um sistema pessoal de aprendizado e produtividade para Victor — Head de Growth e Produto na SMPL — que usa Claude Code como ferramenta de trabalho, não como desenvolvedor. O sistema deve:
+O co-coach é um **tutor de IA instalável**: um repositório público que qualquer pessoa clona e, ao abrir o Claude Code dentro dele, é recebida por um tutor que ensina a usar IA aplicada ao trabalho — na prática, em português, sem exigir conhecimento de programação.
 
-1. Capturar conteúdo relevante sobre Claude Code, IA e ferramentas com o mínimo de fricção
-2. Tornar esse conteúdo acessível no celular, filtrado por tema e contexto
-3. Distribuir habilidades (skills) especializadas para todos os projetos ativos automaticamente
-4. Dar visibilidade para o Victor de todos os projetos ativos ao mesmo tempo numa visão de Kanban usando a @TASKS.md de cada projeto
-5. **Ensinar Victor a usar Claude Code enquanto constrói funcionalidades reais no próprio co-coach** — aprender fazendo, não lendo documentação. Esse ensino deve acontecer através de interfaces visuais (feed, gerenciador, diagramas), nunca exigindo que Victor leia ou edite YAML, hooks ou arquivos de configuração para entender o que está acontecendo (decisão registrada em 2026-07-04, ver `kb/decisoes/`)
-6. **Direcionar esse aprendizado para a tese Service-as-a-Software da Sequoia** (agentes de IA entregando trabalho de serviço, precificado por outcome em vez de assento/licença) — porque Victor vai aplicá-la na prática na SMPL, no papel de Head de Growth e Produto. Isso significa priorizar, dentro da KB e do caminho de estudo, os temas que sustentam essa tese: arquitetura de produto AI-first, agentes autônomos, pricing por outcome, e cases reais de empresas fazendo essa transição
+O tutor funciona como um wizard de instalação: coleta contexto por perguntas (uma de cada vez), monta um perfil do aluno, e a partir dele recomenda lições da knowledge base e da trilha oficial da Anthropic. O aprendizado acontece fazendo, dentro do próprio Claude Code.
+
+**Problema que resolve:** aprender Claude Code hoje exige ler documentação técnica em inglês. Não existe um "tutor instalável" em português que ensine fazendo, adaptado ao contexto de quem não é desenvolvedor.
 
 ---
 
 ## Histórias de usuário
 
-### Ingestão de conteúdo
+### Onboarding (o wizard)
 
-- **Como** Victor, **quero** compartilhar uma URL pelo iPhone **para que** ela seja sumarizada e apareça no feed em menos de 3 minutos, sem abrir o computador
-- **Como** Victor, **quero** que repositórios que eu estrelo no GitHub sejam indexados automaticamente toda semana **para que** eu não precise fazer isso manualmente
-- **Como** Victor, **quero** que o Claude extraia título, tema, pontos principais e nota de relevância de cada link **para que** eu não precise ler o conteúdo completo para decidir se vale a pena
+- **Como** pessoa nova, **quero** clonar o repo, rodar `claude` e ser recebida por um tutor que se apresenta e me entrevista **para que** eu comece a aprender sem ler nenhuma documentação antes
+- **Como** pessoa nova, **quero** que o tutor faça uma pergunta de cada vez, com opções claras, **para que** eu nunca fique perdida sobre o que responder
+- **Como** aluna, **quero** que minhas respostas virem um perfil persistente (`perfil-do-aluno.md`) **para que** o tutor lembre de mim entre sessões e não repita perguntas
 
-### Feed mobile
+### Modo tutor (contínuo)
 
-- **Como** Victor, **quero** acessar todos os cards pelo celular com filtro por tema **para que** eu encontre o que preciso rapidamente durante uma sessão de trabalho
-- **Como** Victor, **quero** ver a data do último rebuild e o total de cards por tema no feed **para que** eu saiba se o sistema está atualizado
+- **Como** aluna, **quero** que o tutor sempre pergunte antes de agir e explique o porquê em linguagem simples **para que** eu entenda o que está acontecendo, não só receba o resultado
+- **Como** aluna, **quero** que a cada sessão o tutor sugira a próxima lição com base no meu perfil e no que já estudei **para que** eu tenha um caminho, não uma pilha de conteúdo
+- **Como** aluna, **quero** ser testada com quizzes curtos sobre o que estudei **para que** eu saiba se realmente aprendi
 
-### Skills
+### Knowledge base
 
-- **Como** Victor, **quero** criar uma skill em um lugar só **para que** ela fique disponível automaticamente em todos os meus projetos (iracing_analysis, alamtoco, novos futuros)
-- **Como** Victor, **quero** invocar uma skill com `/co-coach-nome` em qualquer projeto **para que** o Claude execute um comportamento especializado sem eu precisar re-explicar o contexto
+- **Como** aluna, **quero** que todo o conteúdo de aprendizado (guias, metodologias, templates, ferramentas) esteja em `kb/`, organizado por tema **para que** o tutor e eu encontremos tudo num lugar só
+- **Como** aluna, **quero** seguir a trilha do curso oficial da Anthropic (resumos próprios + links para as lições) **para que** eu estude a fonte oficial com o tutor me acompanhando
 
-### Gerenciamento
+### Instalação e manutenção
 
-- **Como** Victor, **quero** editar skills, ver os cards da KB e configurar sync pelo browser **para que** eu não precise editar arquivos de texto manualmente
-- **Como** Victor, **quero** visualizar o sistema como um diagrama **para que** eu consiga explicar como funciona para outra pessoa
-- **Como** Victor, **quero** poder visualizar todos os meus projetos ativos que tem o co-coach instalado em um lugar só, numa visã de Kan-ban, por meio do arquivo tasks.md de cada projeto.
-
-### Aprender fazendo
-
-- **Como** Victor, **quero** que funcionalidades novas do co-coach sejam construídas comigo e explicadas no processo **para que** eu aprenda Claude Code na prática, não só receba o resultado pronto
-- **Como** Victor, **quero** que toda automação nova me seja explicada e exposta por uma interface visual **para que** eu não precise entender YAML, hooks ou configs de texto para confiar que o sistema funciona — tenho dificuldade de aprendizado por esse tipo de conteúdo
-- **Como** Victor, **quero** que o conteúdo indexado e as sugestões de aprendizado priorizem a tese Service-as-a-Software **para que** eu desenvolva a base técnica e conceitual que preciso para o meu papel de Head de Growth e Produto na SMPL
+- **Como** pessoa nova, **quero** instalar em no máximo 3 passos (instalar Claude Code → clonar → rodar `claude`) **para que** a barreira de entrada seja mínima
+- **Como** mantenedor, **quero** que as automações opcionais (feed, ingestão de links) sejam documentadas mas desligadas por padrão **para que** o repo funcione num clone sem nenhum token ou configuração
 
 ---
 
 ## Critérios de aceitação globais
 
-- Toda ingestão de link deve gerar um card com: `titulo`, `tema`, `url`, `data`, `importancia` (1–5) e pelo menos 3 bullets
-- O feed deve reconstruir em menos de 5 minutos após um push em `kb/**`
-- Skills distribuídas devem aparecer em `.claude/skills/` dos repos de destino sem intervenção manual
-- O sistema deve funcionar sem que Victor precise saber programar para operá-lo no dia a dia
-- Nenhuma automação nova deve depender de Victor entender ou editar hooks/config locais (`.claude/settings.json`) para confiar que ela funciona — se a automação precisa de configuração técnica, ela roda no servidor (GitHub Actions) e entrega o resultado por uma interface visual
+- Uma pessoa que nunca viu o projeto clona o repo, roda `claude`, e o wizard de boas-vindas inicia sem nenhuma edição de arquivo (MVP)
+- O perfil do aluno persiste entre sessões e o tutor o consulta antes de recomendar qualquer lição
+- Todo conteúdo de aprendizado vive em `kb/` com frontmatter YAML válido; as pastas numeradas `00`–`07` não existem mais
+- O repo público não contém nenhum dado pessoal do mantenedor nem de clientes (nem no histórico do git, quando sensível)
+- Nenhum conteúdo do curso da Anthropic é reproduzido verbatim — apenas resumos em palavras próprias e links para as lições oficiais
+- O sistema funciona sem que o usuário precise saber programar
 
 ---
 
 ## Fora do escopo
 
-- Multi-usuário — o sistema é pessoal, para Victor apenas
-- Autenticação — não há outros usuários
-- Processamento de vídeos longos (>30 min) de YouTube sem transcrição disponível
-- Interface mobile nativa (app) — o feed mobile é um site responsivo
+- Dados pessoais do mantenedor no repo (contexto SMPL, briefings de cliente, memórias de sessão pessoais)
+- Backend ou servidor obrigatório — o produto é contexto (CLAUDE.md + skills + KB), não software hospedado
+- App mobile nativo — o feed continua sendo site estático opcional
+- Republicação de material com direitos autorais (curso Anthropic, artigos pagos)
+- Conteúdo em outros idiomas — o produto é PT-BR (decisão de 2026-07-16)
+- Multi-tenancy/contas — cada pessoa tem seu próprio clone; o perfil é um arquivo local

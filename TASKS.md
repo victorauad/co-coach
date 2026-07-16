@@ -1,50 +1,60 @@
 # TASKS — co-coach
 
-> Derivado de [STATUS.md](STATUS.md) em 2026-06-24.
-> Atualizado em 2026-06-25 (limpeza pós-handoff).
+> Derivado de requirements.md em 2026-07-16 (pivô: produto público instalável com modo tutor).
 > Legenda: `[ ]` pendente · `[x]` feito · `[-]` descartado
 
 ---
 
-## Prioridade alta
+## Fase 0 — Higienização (pré-requisito de tudo; ordem importa)
 
-- [x] **`docs/proficiency.json`** — criar o arquivo com schema de scores por tema e garantir que a skill `co-coach-quiz` escreve e lê nele corretamente
-- [x] **`config/sync-targets.yml`** — registrar novos repos que precisem receber auto-sync de skills (preencher conforme novos projetos forem criados)
+- [x] **Inventariar conteúdo pessoal/sensível** no repo: `Briefing`, `07-outros/` (briefing de cliente), `WORKFLOWS.md` (entrevista pessoal), `memory/`, `sessoes/`, `DESIGN-IS-2026-07-02/`, referências a SMPL/Service-as-a-Software em CLAUDE.md e kb/
+- [x] **Mover o conteúdo pessoal** para pasta privada fora do repo (`~/Projetos/co-coach-pessoal/`)
+- [x] **Avaliar limpeza de histórico do git** — não necessária: `07-outros/` e `Briefing` já eram ignorados pelo `.gitignore` e nunca entraram no histórico
+- [x] Adicionar `perfil-do-aluno.md`, `memory/` e `sessoes/` ao `.gitignore`
+
+## Fase 1 — Migração `00`–`06` → `kb/`
+
+- [ ] Criar estrutura `kb/guias/`, `kb/templates/`, `kb/trilha-anthropic/`
+- [ ] Converter os ~35 arquivos das pastas `00`–`04` e `06` para `kb/guias/` com frontmatter YAML válido (novo campo `tipo: guia`)
+- [ ] Mover `05-templates/` → `kb/templates/` (`tipo: template`)
+- [ ] Adaptar `scripts/build-site.py` para o campo `tipo` e subpastas de `kb/`
+- [ ] Validar rebuild do feed com todo o conteúdo migrado; só então apagar as pastas numeradas
+
+## Fase 2 — Modo tutor (o coração do pivô)
+
+- [ ] **Reescrever `CLAUDE.md` como persona de tutor** — sempre perguntar antes de agir, uma pergunta por vez, explicar o porquê, nunca exigir YAML do aluno
+- [ ] **Criar skill `co-coach-start`** (evolução do `co-coach-wizard`): entrevista de boas-vindas → gera `perfil-do-aluno.md` → recomenda primeira lição ← **MVP: pessoa clona, roda `claude`, é recebida pelo wizard**
+- [ ] Adaptar `co-coach-quiz` e `co-coach-digest` para ler o perfil do aluno em vez de assumir o Victor
+- [ ] Definir como o tutor registra progresso (lições concluídas, quizzes) no perfil
+
+## Fase 3 — Instalabilidade
+
+- [ ] Reescrever `README.md` público: o que é, instalação em 3 passos, primeiro uso
+- [ ] Esvaziar `config/sync-targets.yml` (deixar exemplo comentado)
+- [ ] Documentar automações opcionais (feed, ingestão) como recurso avançado com secrets próprios
+- [ ] **Teste de fumaça:** clonar o repo numa pasta limpa e percorrer o fluxo completo de onboarding
+
+## Fase 4 — Trilha do curso Anthropic (Skilljar)
+
+- [ ] Acessar o curso com login do Victor e mapear módulos/lições
+- [ ] Criar cards `kb/trilha-anthropic/` — resumo em palavras próprias + link da lição + perguntas de verificação (nunca conteúdo verbatim)
+- [ ] Integrar a trilha ao tutor: "próxima lição é o módulo X — faça lá e volte para o quiz"
 
 ---
 
-## Prioridade média
+## Backlog herdado (pré-pivô, reavaliar depois da Fase 3)
 
-- [x] **Dashboard de sync** — adicionar step ao final de `sync-skills.yml` que gera/atualiza `config/sync-status.md` com: repo, skills instaladas, data do último sync
-- [ ] **Ingestão de playlists do YouTube** — modificar `scripts/ingest.py` para aceitar URLs de playlist e iterar sobre os vídeos
-- [ ] **Gap analysis simples na KB** — inspirado em `garrytan/gbrain` (visto via ingestão de stars em 2026-07-04): relatório periódico que identifica temas com poucas fontes ou pouco aprofundados em `kb/`, para guiar o que buscar/estrelar em seguida
-- [ ] **Medir resultado das decisões no diário** — inspirado em `kayba-ai/agentic-context-engine` (ACE, visto em 2026-07-04): evoluir `kb/decisoes/` para registrar não só a decisão, mas o resultado medido dela (economizou tempo? gerou retrabalho?), fechando o loop de aprendizado
-
----
-
-## Prioridade baixa
-
-- [ ] **Changelog automático de KB** — adicionar step no `ingest-link.yml` que acrescenta uma linha em `kb/CHANGELOG.md` com: data, URL e título do conteúdo indexado
-- [ ] **Reorganizar `skills/README.md`** — atualizar o índice de skills por categoria: produtividade, marketing, dados, ferramentas, integrações
-- [ ] **Step de verificação nos workflows** — adicionar ao `ingest-link.yml` e `sync-skills.yml` um step básico de validação que falha se o arquivo gerado estiver vazio ou malformado
-
----
+- [ ] Ingestão de playlists do YouTube (`scripts/ingest.py`)
+- [ ] Gap analysis simples na KB (relatório de temas pouco cobertos)
+- [ ] Changelog automático de KB no `ingest-link.yml`
+- [ ] Step de verificação nos workflows (falhar se arquivo gerado estiver vazio/malformado)
 
 ## Feito (referência)
 
-- [x] Ingestão via GitHub Issue (testado em Issue #1 — ~23s, card no feed, Issue fechada)
-- [x] Feed mobile no ar: `https://victorauad.github.io/co-coach`
-- [x] 30+ skills criadas e no padrão `co-coach-*`
-- [x] Sync automático de skills para `iracing_analysis` e `alamtoco`
-- [x] Workflow de setup de novo projeto (`setup-project.yml`)
-- [x] Rebuild automático do site por push em `kb/**` ou `skills/**`
-- [x] Memória de sessão via `/co-coach-handoff`
-- [x] Estatísticas no feed mobile (rodapé com data do rebuild e contagem por tema em `docs/index.html`)
-- [x] `static/gerenciador.html` — interface de gerenciamento via browser (porta 8765)
-- [x] `static/aprenda.html` — diagrama visual explicativo do sistema (absorveu o `docs/sistema.html`)
-- [x] `build-site.py` atualizado para copiar `static/` → `docs/` a cada rebuild
-- [x] Spec SDD completa: `requirements.md`, `design.md`, CLAUDE.md atualizado
+- [x] Spec do pivô reescrita: `requirements.md`, `design.md`, `TASKS.md` (2026-07-16)
+- [x] Fase pessoal do projeto (pré-pivô): ingestão via Issue, feed mobile no ar, 30+ skills, sync automático, gerenciador local, memória de sessão — ver git log até 2026-07-16
 
 ## Descartado
 
-- [-] **iOS Shortcut** — fluxo URL → Issue → feed descartado; não será implementado
+- [-] iOS Shortcut (fluxo URL → Issue → feed)
+- [-] Direcionamento exclusivo à tese Service-as-a-Software — sai do repo público; vira contexto pessoal do Victor fora daqui
