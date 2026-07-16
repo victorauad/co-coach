@@ -14,11 +14,11 @@
 
 ## Fase 1 — Migração `00`–`06` → `kb/`
 
-- [ ] Criar estrutura `kb/guias/`, `kb/templates/`, `kb/trilha-anthropic/`
-- [ ] Converter os ~35 arquivos das pastas `00`–`04` e `06` para `kb/guias/` com frontmatter YAML válido (novo campo `tipo: guia`)
-- [ ] Mover `05-templates/` → `kb/templates/` (`tipo: template`)
-- [ ] Adaptar `scripts/build-site.py` para o campo `tipo` e subpastas de `kb/`
-- [ ] Validar rebuild do feed com todo o conteúdo migrado; só então apagar as pastas numeradas
+- [x] Criar estrutura `kb/guias/`, `kb/templates/`, `kb/trilha-anthropic/`
+- [x] Converter os arquivos das pastas `00`–`04` e `06` para `kb/guias/` com frontmatter YAML válido (25 guias; `pontos-cegos-do-meu-raciocinio.md` era pessoal → pasta privada)
+- [x] Mover `05-templates/` → `kb/templates/` (`tipo: template`; personas de exemplo genericizadas)
+- [x] Adaptar `scripts/build-site.py` para o campo `tipo` e subpastas de `kb/` (rglob; `kb/decisoes/` agora entra no feed como `tipo: decisao`)
+- [x] Validar rebuild do feed (138 conteúdos: 110 cards, 25 guias, 2 templates, 1 decisão) e apagar as pastas numeradas
 
 ## Fase 2 — Modo tutor (o coração do pivô)
 

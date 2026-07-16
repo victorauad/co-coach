@@ -1,6 +1,7 @@
 ---
 titulo: "[Decisão] PAT do GitHub armazenado em arquivo local vs. localStorage"
 tema: metodologia
+tipo: decisao
 data: 2026-06-30
 projeto: co-coach
 importancia: alta

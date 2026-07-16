@@ -14,19 +14,11 @@ from pathlib import Path
 DOCS_DIR = Path("docs")
 DOCS_DIR.mkdir(exist_ok=True)
 
-# Pastas incluídas no feed e o tema padrão de cada uma
-CONTENT_DIRS = [
-    (Path("kb"),                      None),           # tema vem do frontmatter
-    (Path("06-ferramentas-e-repos"), "ferramentas"),
-    (Path("03-metodologias"),        "metodologia"),
-    (Path("02-fluxos-de-trabalho"),  "workflow"),
-    (Path("04-biblioteca-de-estudos"), "outros"),
-    (Path("01-setup"),               "setup"),
-    (Path("05-templates"),           "setup"),
-]
+# Todo o conteúdo vive em kb/ (raiz = cards de links; subpastas = guias, templates, trilhas)
+KB_DIR = Path("kb")
 
 # Arquivos que são índices/navegação, não conteúdo
-SKIP_FILES = {"README.md", "lista-de-videos.md"}
+SKIP_FILES = {"README.md"}
 
 
 def parse_frontmatter(text: str) -> tuple[dict, str]:
@@ -74,59 +66,46 @@ def first_paragraph(body: str) -> str:
 
 def load_cards() -> list[dict]:
     cards = []
-    for content_dir, default_tema in CONTENT_DIRS:
-        if not content_dir.exists():
+    for md_file in sorted(KB_DIR.rglob("*.md"), reverse=True):
+        # Pula índices, templates de scaffolding (_*.md) e o SKILL.md de exemplo
+        if md_file.name in SKIP_FILES or md_file.name.startswith("_") or md_file.name == "SKILL.md":
             continue
-        for md_file in sorted(content_dir.glob("*.md"), reverse=True):
-            if md_file.name in SKIP_FILES:
-                continue
-            text = md_file.read_text(encoding="utf-8")
-            meta, body = parse_frontmatter(text)
+        text = md_file.read_text(encoding="utf-8")
+        meta, body = parse_frontmatter(text)
 
-            # Arquivos com frontmatter (kb): usa campos diretamente
-            if meta:
-                bullets_raw = extract_section(body, "Resumo")
-                bullets = [line.lstrip("- ").strip() for line in bullets_raw.splitlines() if line.strip().startswith("-")]
-                importancia = extract_section(body, "Por que isso importa") or first_paragraph(body)
-                titulo = meta.get("titulo", md_file.stem)
-                tema = meta.get("tema", default_tema or "outros")
-                url = meta.get("url", "#")
-                data = meta.get("data", "")
-                fonte = meta.get("fonte", "")
-                github_repo = meta.get("github_repo", "")
-                github_stars = meta.get("github_stars", "")
-            else:
-                # Arquivos sem frontmatter: extrai título do H1, bullets da lista, resumo do primeiro parágrafo
-                titulo = extract_title(body, md_file.stem.replace("-", " ").title())
-                tema = default_tema or "outros"
-                url = "#"
-                data = ""
-                fonte = ""
-                github_repo = ""
-                github_stars = ""
-                bullets_section = extract_section(body, "Resumo")
-                if bullets_section:
-                    bullets = [l.lstrip("- ").strip() for l in bullets_section.splitlines() if l.strip().startswith("-")]
-                else:
-                    bullets = extract_bullets_from_body(body)
-                importancia = first_paragraph(body)
+        # Todo arquivo de conteúdo em kb/ deve ter frontmatter; fallback para os campos ausentes
+        titulo = meta.get("titulo") or extract_title(body, md_file.stem.replace("-", " ").title())
+        tema = meta.get("tema", "outros")
+        tipo = meta.get("tipo", "card")
+        url = meta.get("url", "#")
+        data = meta.get("data", "")
+        fonte = meta.get("fonte", "")
+        github_repo = meta.get("github_repo", "")
+        github_stars = meta.get("github_stars", "")
 
-            if not bullets:
-                bullets = [first_paragraph(body)] if first_paragraph(body) else ["Ver conteúdo completo no repo"]
+        bullets_raw = extract_section(body, "Resumo")
+        bullets = [l.lstrip("- ").strip() for l in bullets_raw.splitlines() if l.strip().startswith("-")]
+        if not bullets:
+            bullets = extract_bullets_from_body(body)
+        importancia = extract_section(body, "Por que isso importa") or first_paragraph(body)
 
-            cards.append({
-                "titulo": titulo,
-                "tema": tema,
-                "url": url,
-                "data": data,
-                "bullets": bullets,
-                "importancia": importancia,
-                "filename": md_file.name,
-                "pasta": content_dir.name,
-                "fonte": fonte,
-                "github_repo": github_repo,
-                "github_stars": github_stars,
-            })
+        if not bullets:
+            bullets = [first_paragraph(body)] if first_paragraph(body) else ["Ver conteúdo completo no repo"]
+
+        cards.append({
+            "titulo": titulo,
+            "tema": tema,
+            "tipo": tipo,
+            "url": url,
+            "data": data,
+            "bullets": bullets,
+            "importancia": importancia,
+            "filename": md_file.name,
+            "pasta": md_file.parent.name,
+            "fonte": fonte,
+            "github_repo": github_repo,
+            "github_stars": github_stars,
+        })
     return cards
 
 
@@ -602,7 +581,7 @@ def main():
     (DOCS_DIR / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
 
     # Gera knowledge-base.json para consumo pelas skills
-    kb_fields = ["titulo", "tema", "url", "data", "bullets", "importancia", "fonte", "github_repo", "github_stars"]
+    kb_fields = ["titulo", "tema", "tipo", "url", "data", "bullets", "importancia", "fonte", "github_repo", "github_stars"]
     kb_entries = [{k: c[k] for k in kb_fields} for c in cards]
     (DOCS_DIR / "knowledge-base.json").write_text(
         json.dumps(kb_entries, ensure_ascii=False, indent=2),
