@@ -51,4 +51,4 @@ Pedir "me dá os números" sem entender de onde vieram. Sempre peça ao Claude p
 
 ## Skill candidata
 
-Se você consulta BigQuery toda semana com o mesmo tipo de pergunta, isso é forte candidato a virar uma *skill* (ver `03-metodologias/skills.md`). Ex.: uma skill "relatorio-pipeline" que já sabe o schema das suas tabelas e o formato de saída que você gosta.
+Se você consulta BigQuery toda semana com o mesmo tipo de pergunta, isso é forte candidato a virar uma *skill* (ver `kb/guias/metodologia-skills.md`). Ex.: uma skill "relatorio-pipeline" que já sabe o schema das suas tabelas e o formato de saída que você gosta.

@@ -14,7 +14,7 @@ Um lugar único pra você aprender e consultar como usar o Claude Code no trabal
 
 ## A regra de ouro pra não travar
 
-Você me disse que disciplina não é seu forte. Então a regra aqui é uma só:
+Se disciplina não é o seu forte (é o caso da maioria), a regra aqui é uma só:
 
 > **Nunca abra este repositório só pra "estudar". Abra sempre com uma tarefa real em mente.**
 
@@ -24,11 +24,11 @@ Exemplo: "preciso cruzar dados de pipeline do HubSpot" → vai direto pro fluxo 
 
 | Passo | Arquivo | Quando |
 |---|---|---|
-| 1 | `01-setup/instalacao-vscode-mac.md` | Hoje. Instala e roda uma vez. |
-| 2 | `01-setup/checklist-primeiro-dia.md` | Logo depois de instalar. |
-| 3 | `02-fluxos-de-trabalho/` | Quando tiver uma tarefa real. |
-| 4 | `03-metodologias/` | Quando quiser melhorar a forma como você pede as coisas. |
-| 5 | `04-biblioteca-de-estudos/` | Nos intervalos, no transporte, etc. (são vídeos). |
+| 1 | `kb/guias/instalacao-vscode-mac.md` | Hoje. Instala e roda uma vez. |
+| 2 | `kb/guias/checklist-primeiro-dia.md` | Logo depois de instalar. |
+| 3 | Guias `fluxo-*.md` em `kb/guias/` | Quando tiver uma tarefa real. |
+| 4 | Guias `metodologia-*.md` em `kb/guias/` | Quando quiser melhorar a forma como você pede as coisas. |
+| 5 | `kb/guias/lista-de-videos.md` | Nos intervalos, no transporte, etc. (são vídeos). |
 
 ## Como abrir os arquivos no VS Code
 

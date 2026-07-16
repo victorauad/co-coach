@@ -16,7 +16,7 @@ A ideia central de skills, na frase da própria Anthropic: parar de se repetir e
 
 Na prática: <cite index="11-1">uma skill é um workflow reutilizável definido em `.claude/skills/<nome>/SKILL.md`. O frontmatter dá o nome e uma descrição de uma linha; o corpo descreve o workflow. O agente invoca a skill como se fosse uma ferramenta.</cite>
 
-## Anatomia (veja o exemplo pronto em 05-templates/skill-exemplo/SKILL.md)
+## Anatomia (veja o exemplo pronto em kb/templates/skill-exemplo/SKILL.md)
 
 ```markdown
 ---

@@ -18,7 +18,7 @@ Seu projeto de fundo de investimento "multi-agente" era exatamente isso: vários
 
 <cite index="9-1">A Anthropic descreve subagentes como assistentes customizados para tipos específicos de tarefa. O Claude usa a descrição do subagente como pista de roteamento ao decidir se delega trabalho a ele — então um bom subagente é mais que uma persona: é um workflow bem delimitado, com as ferramentas e instruções certas para um trabalho recorrente.</cite>
 
-<cite index="11-1">Subagentes são definidos em `.claude/agents/<nome>.md`, com frontmatter declarando suas ferramentas e modelo.</cite> Veja o exemplo pronto em `05-templates/subagente-exemplo.md`.
+<cite index="11-1">Subagentes são definidos em `.claude/agents/<nome>.md`, com frontmatter declarando suas ferramentas e modelo.</cite> Veja o exemplo pronto em `kb/templates/subagente-exemplo.md`.
 
 ## Por que usar subagentes: contexto limpo
 

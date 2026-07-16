@@ -176,7 +176,7 @@ jobs:
           response=$(curl -s -w "%{http_code}" -o /tmp/status_check.json \
             -H "Authorization: Bearer $GH_PAT" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/victorauad/co-coach/contents/config/sync-status.md")
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/config/sync-status.md")
 
           if [ "$response" = "200" ]; then
             sha=$(python3 -c "import sys, json; print(json.load(open('/tmp/status_check.json')).get('sha',''))")
@@ -187,11 +187,11 @@ jobs:
             -X PUT \
             -H "Authorization: Bearer $GH_PAT" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/victorauad/co-coach/contents/config/sync-status.md" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/config/sync-status.md" \
             -d "{\"message\": \"chore: atualizar sync-status.md [$DATA]\", \"content\": \"$encoded\"$sha_param}")
 
           if [ "$http_status" = "200" ] || [ "$http_status" = "201" ]; then
-            echo "✅ config/sync-status.md atualizado no co-coach"
+            echo "✅ config/sync-status.md atualizado em ${GITHUB_REPOSITORY}"
           else
             echo "⚠️ Falha ao salvar sync-status.md (HTTP $http_status) — não bloqueia o sync"
             cat /tmp/status_response.json

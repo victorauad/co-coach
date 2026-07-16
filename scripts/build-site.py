@@ -484,7 +484,7 @@ SKILL_CATEGORIES = {
         "co-coach-builder", "co-coach-handoff", "co-coach-list",
         "co-coach-mermaid", "co-coach-obsidian", "co-coach-quiz",
         "co-coach-repomix", "co-coach-review", "co-coach-sdd",
-        "co-coach-setup", "co-coach-support", "co-coach-ui", "co-coach-wizard",
+        "co-coach-setup", "co-coach-start", "co-coach-support", "co-coach-ui", "co-coach-wizard",
     ],
     "Marketing & Growth": [
         "co-coach-ads", "co-coach-analytics", "co-coach-competitor",

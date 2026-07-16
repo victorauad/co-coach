@@ -30,9 +30,9 @@ Por que isso importa: transforma um tutorial que você "só seguiu" em conhecime
 
 Peça ao Claude:
 
-> "Crie um arquivo CLAUDE.md para este projeto descrevendo que sou Head de Growth numa startup de Martech, que estou aprendendo, e que prefiro explicações sem jargão. Veja o exemplo em 05-templates/CLAUDE.md.exemplo."
+> "Crie um arquivo CLAUDE.md para este projeto descrevendo quem eu sou e o que faço [complete com seu contexto], que estou aprendendo, e que prefiro explicações sem jargão. Veja o exemplo em kb/templates/CLAUDE.md.exemplo."
 
-Por que isso importa: o `CLAUDE.md` é o arquivo de contexto que o Claude Code lê automaticamente toda vez. É o jeito de não repetir quem você é em toda conversa. (Mais sobre isso em `03-metodologias/`.)
+Por que isso importa: o `CLAUDE.md` é o arquivo de contexto que o Claude Code lê automaticamente toda vez. É o jeito de não repetir quem você é em toda conversa. (Mais sobre isso nos guias `metodologia-*.md` de `kb/guias/`.)
 
 ## ☐ 4. Usar o Plan Mode uma vez (3 min)
 
@@ -46,4 +46,4 @@ Por que isso importa: no Plan Mode o Claude **planeja antes de executar**, e voc
 
 ## Pronto. E agora?
 
-Você já sabe o básico de operação. A partir daqui, **não estude mais por estudar** — vá para `02-fluxos-de-trabalho/` quando tiver uma tarefa real de trabalho. É assim que gruda.
+Você já sabe o básico de operação. A partir daqui, **não estude mais por estudar** — vá para os guias `fluxo-*.md` de `kb/guias/` quando tiver uma tarefa real de trabalho. É assim que gruda.
