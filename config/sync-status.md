@@ -1,12 +1,9 @@
 # Sync Status
 
-> Atualizado em: 2026-07-16 13:51 UTC
+> Atualizado em: 2026-07-16 14:10 UTC
 
 | Repo | Skills instaladas | Último sync |
 |------|-------------------|-------------|
-| `victorauad/iracing_analysis` | 35 skills | 2026-07-16 13:51 UTC |
-| `victorauad/alamtoco` | 35 skills | 2026-07-16 13:51 UTC |
-| `victorauad/AuaDriving` | 35 skills | 2026-07-16 13:51 UTC |
 
 ## Skills sincronizadas (35)
 
