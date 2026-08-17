@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-10",
+  "gerado_em": "2026-08-17",
   "total_kb": 110,
   "contagem_por_tema": {
     "setup": 6,
@@ -27,7 +27,7 @@
     {
       "tema": "outros",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 51,
+      "dias_sem_atualizar": 58,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)"
@@ -36,7 +36,7 @@
     {
       "tema": "agentes-ia",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 37,
+      "dias_sem_atualizar": 44,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)"
