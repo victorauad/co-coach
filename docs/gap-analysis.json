@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-17",
+  "gerado_em": "2026-08-24",
   "total_kb": 110,
   "contagem_por_tema": {
     "setup": 6,
@@ -27,19 +27,47 @@
     {
       "tema": "outros",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 58,
+      "dias_sem_atualizar": 65,
+      "prioridade": "normal",
+      "motivos": [
+        "apenas 1 arquivo(s) indexado(s)",
+        "sem conteúdo novo há 65 dias"
+      ]
+    },
+    {
+      "tema": "agentes-ia",
+      "total_arquivos": 1,
+      "dias_sem_atualizar": 51,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)"
       ]
     },
     {
-      "tema": "agentes-ia",
-      "total_arquivos": 1,
-      "dias_sem_atualizar": 44,
+      "tema": "workflow",
+      "total_arquivos": 3,
+      "dias_sem_atualizar": 62,
       "prioridade": "normal",
       "motivos": [
-        "apenas 1 arquivo(s) indexado(s)"
+        "sem conteúdo novo há 62 dias"
+      ]
+    },
+    {
+      "tema": "mcp",
+      "total_arquivos": 8,
+      "dias_sem_atualizar": 63,
+      "prioridade": "normal",
+      "motivos": [
+        "sem conteúdo novo há 63 dias"
+      ]
+    },
+    {
+      "tema": "skills",
+      "total_arquivos": 11,
+      "dias_sem_atualizar": 62,
+      "prioridade": "normal",
+      "motivos": [
+        "sem conteúdo novo há 62 dias"
       ]
     }
   ]
