@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-31",
+  "gerado_em": "2026-09-07",
   "total_kb": 110,
   "contagem_por_tema": {
     "setup": 6,
@@ -27,65 +27,66 @@
     {
       "tema": "outros",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 72,
+      "dias_sem_atualizar": 79,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)",
-        "sem conteúdo novo há 72 dias"
+        "sem conteúdo novo há 79 dias"
       ]
     },
     {
       "tema": "agentes-ia",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 58,
+      "dias_sem_atualizar": 65,
       "prioridade": "normal",
       "motivos": [
-        "apenas 1 arquivo(s) indexado(s)"
+        "apenas 1 arquivo(s) indexado(s)",
+        "sem conteúdo novo há 65 dias"
       ]
     },
     {
       "tema": "workflow",
       "total_arquivos": 3,
-      "dias_sem_atualizar": 69,
+      "dias_sem_atualizar": 76,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 69 dias"
+        "sem conteúdo novo há 76 dias"
       ]
     },
     {
       "tema": "setup",
       "total_arquivos": 6,
-      "dias_sem_atualizar": 67,
+      "dias_sem_atualizar": 74,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 67 dias"
+        "sem conteúdo novo há 74 dias"
       ]
     },
     {
       "tema": "prompts",
       "total_arquivos": 6,
-      "dias_sem_atualizar": 67,
+      "dias_sem_atualizar": 74,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 67 dias"
+        "sem conteúdo novo há 74 dias"
       ]
     },
     {
       "tema": "mcp",
       "total_arquivos": 8,
-      "dias_sem_atualizar": 70,
+      "dias_sem_atualizar": 77,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 70 dias"
+        "sem conteúdo novo há 77 dias"
       ]
     },
     {
       "tema": "skills",
       "total_arquivos": 11,
-      "dias_sem_atualizar": 69,
+      "dias_sem_atualizar": 76,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 69 dias"
+        "sem conteúdo novo há 76 dias"
       ]
     }
   ]
