@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-09-07",
+  "gerado_em": "2026-09-14",
   "total_kb": 110,
   "contagem_por_tema": {
     "setup": 6,
@@ -27,66 +27,93 @@
     {
       "tema": "outros",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 79,
+      "dias_sem_atualizar": 86,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)",
-        "sem conteúdo novo há 79 dias"
+        "sem conteúdo novo há 86 dias"
       ]
     },
     {
       "tema": "agentes-ia",
       "total_arquivos": 1,
-      "dias_sem_atualizar": 65,
+      "dias_sem_atualizar": 72,
       "prioridade": "normal",
       "motivos": [
         "apenas 1 arquivo(s) indexado(s)",
-        "sem conteúdo novo há 65 dias"
+        "sem conteúdo novo há 72 dias"
       ]
     },
     {
       "tema": "workflow",
       "total_arquivos": 3,
-      "dias_sem_atualizar": 76,
+      "dias_sem_atualizar": 83,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 76 dias"
+        "sem conteúdo novo há 83 dias"
       ]
     },
     {
       "tema": "setup",
       "total_arquivos": 6,
-      "dias_sem_atualizar": 74,
+      "dias_sem_atualizar": 81,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 74 dias"
+        "sem conteúdo novo há 81 dias"
       ]
     },
     {
       "tema": "prompts",
       "total_arquivos": 6,
-      "dias_sem_atualizar": 74,
+      "dias_sem_atualizar": 81,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 74 dias"
+        "sem conteúdo novo há 81 dias"
       ]
     },
     {
       "tema": "mcp",
       "total_arquivos": 8,
-      "dias_sem_atualizar": 77,
+      "dias_sem_atualizar": 84,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 77 dias"
+        "sem conteúdo novo há 84 dias"
       ]
     },
     {
       "tema": "skills",
       "total_arquivos": 11,
-      "dias_sem_atualizar": 76,
+      "dias_sem_atualizar": 83,
       "prioridade": "normal",
       "motivos": [
-        "sem conteúdo novo há 76 dias"
+        "sem conteúdo novo há 83 dias"
+      ]
+    },
+    {
+      "tema": "metodologia",
+      "total_arquivos": 13,
+      "dias_sem_atualizar": 64,
+      "prioridade": "normal",
+      "motivos": [
+        "sem conteúdo novo há 64 dias"
+      ]
+    },
+    {
+      "tema": "agentes",
+      "total_arquivos": 16,
+      "dias_sem_atualizar": 64,
+      "prioridade": "normal",
+      "motivos": [
+        "sem conteúdo novo há 64 dias"
+      ]
+    },
+    {
+      "tema": "ferramentas",
+      "total_arquivos": 45,
+      "dias_sem_atualizar": 64,
+      "prioridade": "normal",
+      "motivos": [
+        "sem conteúdo novo há 64 dias"
       ]
     }
   ]
